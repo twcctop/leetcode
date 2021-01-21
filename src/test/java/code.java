@@ -618,8 +618,9 @@ public class code {
     //
     @Test
     public void test49() {
-        String[] args={"eat", "tea", "tan", "ate", "nat", "bat"};
-         System.out.println(groupAnagrams(args));;
+        String[] args = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        System.out.println(groupAnagrams(args));
+        ;
     }
 
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -631,7 +632,7 @@ public class code {
             if (map.containsKey(s)) {
                 List<String> strings = map.get(s);
                 strings.add(str);
-                map.put(s,strings);
+                map.put(s, strings);
             } else {
                 List<String> list = new ArrayList<String>();
                 list.add(str);
@@ -639,35 +640,37 @@ public class code {
             }
         }
 
-        List<List<String>> res=new LinkedList<List<String>>();
+        List<List<String>> res = new LinkedList<List<String>>();
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
             List<String> value = entry.getValue();
             res.add(value);
 
         }
-        return  res;
+        return res;
     }
 
 
     @Test
-    public void test94(){
+    public void test94() {
 
     }
+
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> res= new ArrayList<Integer>();
-        inorder(root,res);
-        return  res;
+        List<Integer> res = new ArrayList<Integer>();
+        inorder(root, res);
+        return res;
     }
 
-    public void inorder(TreeNode root,List<Integer> res){
-        if (root==null) {
+    public void inorder(TreeNode root, List<Integer> res) {
+        if (root == null) {
             return;
         }
-        inorder(root.left,res);
+        inorder(root.left, res);
         res.add(root.val);
-        inorder(root.right,res);
+        inorder(root.right, res);
 
     }
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -688,49 +691,52 @@ public class code {
     }
 
     @Test
-    public void  test322(){
+    public void test322() {
 
     }
-//    public int coinChange(int[] coins, int amount) {
+
+    //    public int coinChange(int[] coins, int amount) {
 //
 //    }
     @Test
-    public void test69(){
+    public void test69() {
 //        System.out.println(mySqrt(17));
         System.out.println(mySqrt(2147395599));
     }
+
     public int mySqrt(int x) {
-        if (x<=1) {
-             return  x;
+        if (x <= 1) {
+            return x;
         }
-        Long head=0l;
-        Long tail=Long.valueOf(x);
-        Long res=(head+tail)/2;
-       while(true){
+        Long head = 0l;
+        Long tail = Long.valueOf(x);
+        Long res = (head + tail) / 2;
+        while (true) {
             if (res * res > x) {
-                 tail=(head+tail)/2;
-            }else if( res*res <x){
-                head= (head+tail)/2;
-           }else if(res*res==x){
-                return  res.intValue();
+                tail = (head + tail) / 2;
+            } else if (res * res < x) {
+                head = (head + tail) / 2;
+            } else if (res * res == x) {
+                return res.intValue();
             }
 
-           if (res== (head+tail)/2) {
-               return res.intValue();
-           }else {
-                res= (head+tail)/2;
-           }
+            if (res == (head + tail) / 2) {
+                return res.intValue();
+            } else {
+                res = (head + tail) / 2;
+            }
 
         }
     }
 
     @Test
-    public void test367(){
+    public void test367() {
 
     }
+
     public boolean isPerfectSquare(int num) {
-        if (num<=1) {
-            return  true;
+        if (num <= 1) {
+            return true;
         }
         Long head = 0l;
         Long tail = Long.valueOf(num);
@@ -754,14 +760,16 @@ public class code {
             }
         }
 
-        }
+    }
+
     @Test
-    public void test191(){
+    public void test191() {
         //   idea debug得知  读取成8进制的，很怪异
         System.out.println(hammingWeight(00000000000000000000000000001011));
 //        System.out.println(hammingWeight(1011));
 //        System.out.println(hammingWeight(00000000000000000000000000000010));
     }
+
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
         int count = 0;
@@ -770,20 +778,58 @@ public class code {
             int b = a & 1;
             if (b == 1) {
                 count++;
-        }
+            }
         }
         return count;
     }
 
-     @Test
-     public void test50(){
+    @Test
+    public void test50() {
+//         System.out.println(quickMul(2.0, -2147483648));
+        System.out.println(myPow(2.0, -2147483648));
+        System.out.println(myPow(2.0, -4));
 
+    }
 
-     }
-    class Solution {
-            public double myPow(double x, int n) {
+    public double myPow(double x, int n) {
+        long N = n;
+        return N >= 0 ? quickMul(x, N) : 1.0 / quickMul(x, -N);
 
+    }
+
+    public double quickMul(double x, long N) {
+        if (N == 0) {
+            return 1.0;
+        }
+//        if(N<0) {
+//            x=1/x;
+//            N=-N;
+//        }
+        double y = quickMul(x, N / 2);
+        return N % 2 == 0 ? y * y : y * y * x;
+    }
+
+    @Test
+    public void test78(){
+      // 测试移位运算符
+        System.out.println(1 << 4);
+        int[] a={2,5,9};
+        System.out.println(subsets(a));
+    }
+    List<Integer>  t = new ArrayList<Integer>();
+    List<List<Integer>> ans = new ArrayList<List<Integer>>();
+    public List<List<Integer>> subsets(int[] nums) {
+        int n=nums.length;
+        for (int mask = 0; mask < 1<<n; mask++) {
+            t.clear();
+            for (int i = 0; i < n; ++i) {
+                if ((mask & (1 << i)) != 0) {
+                    t.add(nums[i]);
+                }
             }
+            ans.add(new ArrayList<Integer>(t));
+        }
+         return  ans;
     }
 }
 
