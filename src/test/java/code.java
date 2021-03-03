@@ -831,6 +831,36 @@ public class code {
         }
          return  ans;
     }
+     @Test
+    public void test198(){
+          int[] arr= {2,7,9,3,1};
+         System.out.println(rob(arr));
+
+     }
+
+        public int rob(int[] nums) {
+            int len = nums.length;
+            if(len==0){
+                return   0;
+            }
+            if(len==1){
+                return nums[0];
+            }
+            if(len==2){
+                return Math.max(nums[0],nums[1]);
+            }
+            int first= nums[0];
+            int second  = Math.max(first,nums[1]);
+            int res=0;
+            for(int i=2;i<len;i++){
+                int temp =second;
+                res= Math.max(second,nums[i]+first);
+                second=res;
+                first=temp;
+            }
+            return res;
+        }
+
 }
 
 
