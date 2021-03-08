@@ -1,3 +1,6 @@
+package 算法训练营覃超题目;
+
+import entity.ListNode;
 import org.junit.Test;
 
 import javax.naming.ldap.LdapReferralException;
@@ -8,9 +11,72 @@ import java.util.*;
  * @Date 2021/1/5 11:51
  **/
 
-public class code {
+public class 算法训练营题目 {
+    /**
+     *  1. 数组链表，跳表
+     */
+
+    //盛水最多的容器
     @Test
-    public void test() {
+    public void test11(){
+
+    }
+
+    public int maxArea(int[] height) {
+         int res=0;
+         int right = height.length-1;
+         int left =0;
+         while(left<right){
+                 res=Math.max(res,(right-left)*Math.min(height[right],height[left]));
+                 if ( height[left]<height[right]){
+                      left++;
+                 }else {
+                     right--;
+                 }
+         }
+
+         return res;
+    }
+
+    //移动零
+     @Test
+     public void test283(){
+
+    }
+    public void moveZeroes(int[] nums) {
+        int len = nums.length;
+        int slow= 0;
+        for (int fast = 0; fast < len; fast++) {
+            if (nums[fast] !=0) {
+                 nums[slow]=nums[fast];
+                 slow++;
+            }
+        }
+        for(int j =slow;j<len;j++){
+            nums[j]=0;
+        }
+
+    }
+    //爬楼梯 test70
+    public int climbStairs(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        int[] arr = new int[n+1];
+        arr[1] = 1;
+        arr[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        return arr[n];
+    }
+
+
+    @Test
+    public void test15() {
 //        int[] a = {-1, 0, 1, 2, -1, -4};
         int[] a = {0, 0, 0, 0};
 //        int[] a = {-4, -1, -1, 0, 1, 2};
@@ -98,50 +164,84 @@ public class code {
         return ans;
     }
 
+    @Test
+    public void test15_3(){
+         int[] nums={-2,0,1,1,2};
+        System.out.println(threeSum3(nums));
+    }
+
+
+    public List<List<Integer>> threeSum3(int[] nums) {
+        List<List<Integer>> res =new LinkedList<List<Integer>>();
+        List<String> deduplcationList = new LinkedList<String>();
+        int len = nums.length;
+        Arrays.sort(nums);
+        int k = len - 1;
+        int j = 1;
+        nums[-1]= 1;
+        for (int i = 0; i <k; i++) {
+            //去重
+            if (nums[i]>0 || nums[i]==nums[i-1] ) {
+                continue;
+            }
+            for(j=i+1;j<k;j++ ){
+                //边界条件
+                if (nums[i]+ nums[k-1]+ nums[k]<0) {
+                         continue;
+                }
+                if(nums[i]+nums[i+1]+nums[k]>0){
+                        k--;
+                        i--;
+                        continue;
+                }
+                if (nums[i]+ nums[j]+ nums[k]==0) {
+                    List<Integer>  list = new LinkedList<Integer>();
+                    list.add(nums[i]);
+                    list.add(nums[j]);
+                    list.add(nums[k]);
+                    String  duplicateFlag=  nums[i]+"-"+nums[j]+"-"+nums[k];
+                    // 去重
+                    if (!deduplcationList.contains(duplicateFlag)) {
+                    res.add(list);
+                    deduplcationList.add(duplicateFlag);
+                    }
+                }
+            }
+        }
+        //去重 【0,0,0,0] => [0,0,0}
+
+        return res;
+
+    }
+
+
+    /**
+     *  链表部分
+     */
 
     @Test
     public void test206() {
         System.out.println();
         ;
         int[] a = {1, 2, 3, 4, 5};
+//        reverseList(a)
 //        Solution206  s206=new Solution206()
 //        System.out.println(s206.reverseList(node));
     }
-
-    class Solution206 {
-        public ListNode reverseList(ListNode head) {
-            ListNode prev = null;
-            ListNode curr = head;
-            while (curr != null) {
-                ListNode temp = curr.next;
-                curr.next = prev;
-                prev = curr;
-                curr = temp;
-            }
-            return prev;
+    // 反转链表
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
         }
+        return pre;
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode() {
-        }
-
-        ;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        ;
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     @Test
     public void test24() {
@@ -937,7 +1037,16 @@ public class code {
         }
     }
 
+    @Test
+    public void test22(){
+
+    }
+    public List<String> generateParenthesis(int n) {
+        return null;
+    }
+
 
 }
+
 
 
