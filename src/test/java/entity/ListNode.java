@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ *  链表中的节点
+ */
 public class ListNode {
     public ListNode next;
     public Integer val;

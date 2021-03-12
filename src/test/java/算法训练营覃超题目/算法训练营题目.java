@@ -1,6 +1,8 @@
 package 算法训练营覃超题目;
 
 import entity.ListNode;
+import entity.Node;
+import entity.TreeNode;
 import org.junit.Test;
 
 import javax.naming.ldap.LdapReferralException;
@@ -13,47 +15,6 @@ import java.util.*;
 
 public class 算法训练营题目 {
 
-
-
-    @Test
-    public void test94() {
-
-    }
-
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        inorder(root, res);
-        return res;
-    }
-
-    public void inorder(TreeNode root, List<Integer> res) {
-        if (root == null) {
-            return;
-        }
-        inorder(root.left, res);
-        res.add(root.val);
-        inorder(root.right, res);
-
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     @Test
     public void test322() {
@@ -302,13 +263,6 @@ public class 算法训练营题目 {
         }
     }
 
-    @Test
-    public void test22(){
-
-    }
-    public List<String> generateParenthesis(int n) {
-        return null;
-    }
 
 
 }
