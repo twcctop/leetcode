@@ -2,9 +2,9 @@ package 算法训练营覃超题目;
 
 import entity.TreeNode;
 import org.junit.Test;
+import org.omg.PortableInterceptor.INACTIVE;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: twc
@@ -117,6 +117,47 @@ public class _07泛型递归_树的递归 {
     public void test111(){
 
 
+    }
+
+    public int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+         Integer min= Integer.MAX_VALUE;
+         int[]  a = new int[1];
+          a[0]= Integer.MAX_VALUE;
+         int res =0;
+         getDepth(root,a[0],res);
+         return  a[0];
+    }
+
+    private void getDepth(TreeNode root, Integer min, int res) {
+        if (root==null) {
+             return;
+        }
+        res++;
+        if (root.left==null && root.right==null) {
+              min= min<res?min:res;
+              return;
+        }
+        getDepth(root.left,min,res);
+        getDepth(root.right,min,res);
+    }
+
+
+    // 二叉树序列化
+    @Test
+    public void test297(){
+    }
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+
+         return null;
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        return null;
     }
 
 }

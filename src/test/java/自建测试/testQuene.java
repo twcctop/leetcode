@@ -1,4 +1,4 @@
-package collectionSample;
+package 自建测试;
 
 import org.junit.Test;
 
@@ -8,10 +8,11 @@ import java.util.Queue;
 
 /**
  * @Author: twc
- * @Date 2021/3/10 14:46
+ * @Date 2021/3/15 14:17
  **/
-public class classSample {
+public class testQuene {
 
+    // 测试栈
     @Test
     public void testQuene() {
         Queue<String> queue = new LinkedList<String>();
@@ -60,7 +61,4 @@ public class classSample {
         }
         System.out.println(deque);
     }
-
-
-
 }
