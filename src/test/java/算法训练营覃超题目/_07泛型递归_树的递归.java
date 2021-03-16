@@ -21,7 +21,7 @@ public class _07泛型递归_树的递归 {
     //括号生成
     @Test
     public void test22(){
-
+        System.out.println(generateParenthesis(3));
     }
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<String>();
