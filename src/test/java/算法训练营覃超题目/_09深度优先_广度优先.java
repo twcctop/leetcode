@@ -165,7 +165,7 @@ public class _09深度优先_广度优先 {
     }
 
     /**
-     * @Description 岛屿数量
+     * @Description 岛屿数量   很经典的可以用dfs 和bfs  解决的问题
      * @Date 2021/3/17 18:02
      **/
     @Test
@@ -216,19 +216,57 @@ public class _09深度优先_广度优先 {
         int nc = grid[0].length;
         int num_islands= 0;
 
-        for (int  i = 0;  i < nr;  i++) {
-            for (int i1 = 0; i1 < nc; i1++) {
-                if (grid[i][i1] == '1') {
+        for (int  r = 0;  r < nr;  r++) {
+            for (int c = 0; c < nc; c++) {
+                if (grid[r][c] == '1') {
                     num_islands++;
+                    grid[r][c] ='0';
                     Queue<Integer> neighbors =  new LinkedList<>();
+                    //
+                    neighbors.add(r*nc +c);
+                    while (!neighbors.isEmpty()){
+                        while (!neighbors.isEmpty()) {
+                             int id = neighbors.remove();
+                             int row = id/nc;
+                             int col = id%nc;
 
+                            if (row - 1 >= 0 && grid[row-1][col] == '1') {
+                                neighbors.add((row-1) * nc + col);
+                                grid[row-1][col] = '0';
+                            }
+                            if (row + 1 < nr && grid[row+1][col] == '1') {
+                                neighbors.add((row+1) * nc + col);
+                                grid[row+1][col] = '0';
+                            }
+                            if (col - 1 >= 0 && grid[row][col-1] == '1') {
+                                neighbors.add(row * nc + col-1);
+                                grid[row][col-1] = '0';
+                            }
+                            if (col + 1 < nc && grid[row][col+1] == '1') {
+                                neighbors.add(row * nc + col+1);
+                                grid[row][col+1] = '0';
+                            }
+
+                        }
+                    }
                 }
             }
 
         }
 
-
+        return  num_islands;
 
     }
 
+
+    /**
+     * @Description 扫雷游戏
+     * @Date 2021/3/18   **/
+    @Test
+    public void test529() {
+    }
+
+    public char[][] updateBoard(char[][] board, int[] click) {
+        return null;
+    }
 }
