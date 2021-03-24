@@ -13,7 +13,6 @@ public class testShitOperators {
     public  void testBit(){
         int  a= 8;
         System.out.println(a >> 2);
-
     }
 
 }

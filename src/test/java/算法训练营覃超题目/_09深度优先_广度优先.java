@@ -264,9 +264,28 @@ public class _09深度优先_广度优先 {
      * @Date 2021/3/18   **/
     @Test
     public void test529() {
+
     }
 
+    int[] dirX = {0, 1, 0, -1, 1, 1, -1, -1};
+    int[] dirY = {1, 0, -1, 0, 1, -1, 1, -1};
+
+
+
     public char[][] updateBoard(char[][] board, int[] click) {
-        return null;
+        int x=click[0], y=click[1];
+        if (board[x][y]=='M') {
+             board[x][y]= 'X';
+        }else {
+            bfs529(board,x,y);
+        }
+
+        return board;
     }
+
+    private void bfs529(char[][] board, int x, int y) {
+         Queue<int[]> queue = new LinkedList<int[]>();
+
+    }
+
 }
