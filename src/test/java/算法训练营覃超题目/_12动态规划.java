@@ -2,6 +2,11 @@ package 算法训练营覃超题目;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Author: twc
  * @Date 2021/3/24 14:39
@@ -43,8 +48,55 @@ public class _12动态规划 {
             }
         }
         return  count;
-
     }
 
+    /**
+     * @Description  爬楼梯
+     * @Date 2021/3/25 11:16
+     **/
+    @Test
+    public void test70() {
+    }
 
+    /**
+     * @Description 三角形最小路径和
+     * @Date 2021/3/25 11:19
+     **/
+    @Test
+    public void test120() {
+        List<Integer>  list1= new ArrayList<>(Arrays.asList(2));
+        List<Integer>  list2= new ArrayList<>(Arrays.asList(3,4));
+        List<Integer>  list3= new ArrayList<>(Arrays.asList(6,5,7));
+        List<Integer>  list4= new ArrayList<>(Arrays.asList(4,1,8,3));
+        List<List<Integer>> triangle  = new ArrayList<>();
+        triangle.add(list1);
+        triangle.add(list2);
+        triangle.add(list3);
+        triangle.add(list4);
+
+        System.out.println(minimumTotal(triangle));
+    }
+
+    public int minimumTotal(List<List<Integer>> triangle) {
+            int n= triangle.size();
+            int m =  triangle.get(n-1).size();
+            // 定义n行m列的二维数组
+            int[][] dp= new int[n][m];
+            dp[0][0] =triangle.get(0).get(0);
+
+        for (int i = 1; i < n; i++) {
+            int size = triangle.get(i).size();
+            for (int  j = 0;  j < size;  j++) {
+                if (j-1<0) {
+                    dp[i][j]= triangle.get(i).get(j)+ dp[i-1][j];
+                }else {
+                    dp[i][j]= triangle.get(i).get(j) + Math.min( dp[i-1][j-1],dp[i-1][j]);
+                }
+            }
+        }
+        //取出最后一列的最小值
+        int[] resArray = dp[n - 1];
+        Arrays.sort(resArray);
+         return  resArray[0];
+    }
 }
