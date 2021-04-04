@@ -157,4 +157,48 @@ public class _12动态规划_实战题目_2 {
 //        return  maxprofit;
     }
 
+    /**
+     * @Description
+     * @Date 2021/4/4 21:59
+     **/
+    @Test
+    public void test309() {
+
+    }
+
+    public int maxProfitWithCoolTime(int[] prices) {
+        if (prices.length==0) {
+            return 0;
+        }
+        int n = prices.length;
+        //  f[i][0]  手上持有股票的最大受益
+        //  f i  1   手上不持有股票，并且处于冷冻期的最大收益
+        //  f i   2  手上不持有股票，并且不在冷冻期的最大收益
+        int[][]  f  =new  int[prices.length][3];
+        f[0][0]  = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            f[i][0] = Math.max(f[i - 1][0], f[i - 1][2] - prices[i]);
+            f[i][1] = f[i - 1][0] + prices[i];
+            f[i][2] = Math.max(f[i - 1][1], f[i - 1][2]);
+
+
+        }
+        return  Math.max(f[n-1][1],f[n-1][2]);
+    }
+
+    /**
+     * @Description
+     * @Date 2021/4/4 22:26
+     **/
+    @Test
+    public void test714() {
+
+    }
+    public int maxProfitWithtransactionFee(int[] prices, int fee) {
+         
+
+    }
+
+
+
 }
