@@ -2,6 +2,7 @@ package 算法训练营覃超题目;
 
 import org.junit.Test;
 import org.omg.CORBA.ARG_IN;
+import util.ArrayUtil;
 
 import java.awt.image.AreaAveragingScaleFilter;
 import java.lang.reflect.Array;
@@ -95,6 +96,8 @@ public class _18排序算法 {
     @Test
     public void test56() {
 
+        int[][]  inter = {{1,3},{2,6},{8,10},{15,18}};
+        ArrayUtil.printTwoDemimalIntArray(merge(inter));
     }
 
     public int[][] merge(int[][] intervals) {
