@@ -135,4 +135,33 @@ public class _18排序算法 {
         return arrRes ;
     }
 
+    /**
+     * @Description
+     * @Date 2021/4/19 12:29
+     **/
+    @Test
+    public void test493() {
+        int[] a={1,3,2,3,1} ;
+
+        int[] b=   {2,4,3,5,1};
+        int[] c= {2147483647,2147483647,2147483647,2147483647,2147483647,2147483647};
+//        System.out.println(reversePairs(a));
+//        System.out.println(reversePairs(b));
+        System.out.println(reversePairs(c));
+    }
+    public int reversePairs(int[] nums) {
+        if(nums.length< 2){
+             return 0;
+        }
+        int count =0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i]>2*nums[j]) {
+                     count++;
+                }
+            }
+        }
+        return  count;
+    }
+
 }

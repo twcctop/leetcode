@@ -1,4 +1,4 @@
-package 自建测试;
+package test;
 
 import org.junit.Test;
 

@@ -1,8 +1,6 @@
-package 自建测试;
+package test;
 
 import org.junit.Test;
-
-import java.util.Objects;
 
 /**
  * @Author: twc
