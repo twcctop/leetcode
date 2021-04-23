@@ -1,6 +1,5 @@
 package entity;
 
-import 算法训练营覃超题目.算法训练营题目;
 
 /**
  * @Author: twc

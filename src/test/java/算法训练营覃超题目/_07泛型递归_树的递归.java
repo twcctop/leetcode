@@ -2,7 +2,6 @@ package 算法训练营覃超题目;
 
 import entity.TreeNode;
 import org.junit.Test;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.*;
 
@@ -34,11 +33,11 @@ public class _07泛型递归_树的递归 {
               ans.add(cur.toString());
               return;
          }
-          if(open<max){
-              cur.append('(');
-              backTrack(ans,cur,open+1, close,max);
-              cur.deleteCharAt(cur.length() - 1);
-          }
+        if (open < max) {
+            cur.append('(');
+            backTrack(ans, cur, open + 1, close, max);
+            cur.deleteCharAt(cur.length() - 1);
+        }
         if (close < open) {
             cur.append(')');
             backTrack(ans, cur, open, close + 1, max);
