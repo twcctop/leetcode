@@ -3,6 +3,7 @@ package 算法训练营覃超题目;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ public class _17lru {
          Map<Integer,Integer> map;
         public LRUCache(int capacity) {
              this.capacity= capacity;
-            map= new HashMap<>(capacity);
+            map= new LinkedHashMap<>(capacity);
         }
 
         public int get(int key) {
@@ -34,8 +35,8 @@ public class _17lru {
             }
             return  -1;
         }
-
         public void put(int key, int value) {
+
              map.put(key,value);
         }
     }
