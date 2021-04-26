@@ -49,4 +49,15 @@ public class ArrayUtil {
         return arr;
     }
 
+    /**
+     * string转换为int 数组
+     * @param str
+     * @return
+     */
+    public static int[] convertStringIntToArray(String str){
+        int[] ints = JSON.parseObject(str, int[].class);
+        return ints;
+    }
+
+
 }
