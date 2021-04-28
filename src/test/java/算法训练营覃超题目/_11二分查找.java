@@ -145,4 +145,7 @@ public class _11二分查找 {
         Arrays.sort(nums);
         return nums[0];
     }
+
+
+
 }

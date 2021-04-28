@@ -120,8 +120,44 @@ public class _12动态规划_实战题目_homework {
     }
 
     public int maximalSquare(char[][] matrix) {
-
-         return  0;
+         int row = matrix.length;
+         int column= matrix[0].length;
+         int[][] dp =new int[row+1][column+1];
+         int maxlen= 0;
+        for (int i = 1; i < row + 1; i++) {
+            for (int j = 1; j < column + 1; j++) {
+                if (matrix[i-1][j-1] =='1') {
+                     dp[i][j] = Math.min(dp[i-1][j-1],Math.min(dp[i-1][j],dp[i][j-1]))+1;
+                     maxlen = Math.max(dp[i][j],maxlen);
+                }
+            }
+        }
+         return  maxlen*maxlen;
     }
+
+    /**
+     * @Description  不大于某值的最大矩阵和
+
+     * @Date 2021/4/28 17:34
+     **/
+    @Test
+    public void test363() {
+    }
+    public int maxSumSubmatrix(int[][] matrix, int k) {
+         return 0;
+    }
+
+    /**
+     * @Description  青蛙过河
+     * @Date 2021/4/28 17:41
+     **/
+    @Test
+    public void test403() {
+    }
+    public boolean canCross(int[] stones) {
+
+        return true;
+    }
+
 
 }
