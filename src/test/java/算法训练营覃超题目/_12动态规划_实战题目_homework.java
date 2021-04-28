@@ -71,16 +71,57 @@ public class _12动态规划_实战题目_homework {
      **/
     @Test
     public void test72() {
+        String word1= "intention";
+        String word2= "execution";
+        System.out.println(minDistance(word1, word2));
     }
 
     public int minDistance(String word1, String word2) {
-        int[][] dp = new int[word1.length()+1][word2.length()+1];
-        for (int  i = 0;  i < word1.length()+1;  i++) {
-             dp[1]
-
+        int[][] dp = new int[word2.length()+1][word1.length()+1];
+        for (int  i = 0;  i < word2.length()+1;  i++) {
+             dp[i][0] =  i;
         }
+        for (int  j = 1;  j < word1.length()+1;  j++) {
+            dp[0][j] =  j;
+        }
+        for (int i = 1; i < word2.length() + 1; i++) {
+            for (int j = 1; j < word1.length() + 1; j++) {
+                if (word2.charAt(i - 1) == word1.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                    continue;
+                }
+                int min = Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1]));
+                dp[i][j] = min + 1;
+            }
+        }
+
+        return dp[word2.length()][word1.length()];
+    }
+
+    /**
+     * @Description 解码方法
+     * @Date 2021/4/28 10:31
+     **/
+    @Test
+    public void test91() {
+    }
+    public int numDecodings(String s) {
+
+        return 0;
+    }
+
+    /**
+     * @Description
+     * @Date 2021/4/28 11:28
+     **/
+    @Test
+    public void test221() {
 
     }
 
+    public int maximalSquare(char[][] matrix) {
+
+         return  0;
+    }
 
 }

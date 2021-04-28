@@ -128,10 +128,9 @@ public class _19高级动态规划 {
      **/
     @Test
     public void test91() {
-        // 预期 3
-//        String demo1= "1201234";
-
-        String demo1= "1123";
+//        String demo1= "1201234";  // 预期：3
+//        String demo1= "1123";   // 预期：5
+        String demo1= "102213";   // 预期：5
         System.out.println(numDecodings(demo1));
 
     }
@@ -154,7 +153,8 @@ public class _19高级动态规划 {
                         continue;
                     }
                 }
-                 dp[i] = dp[i-1]+1;
+                dp[i] = dp[i-1]+1;
+
             }else{
                  dp[i]= dp[i-1];
             }
