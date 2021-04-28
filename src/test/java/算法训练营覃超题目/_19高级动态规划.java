@@ -103,9 +103,76 @@ public class _19高级动态规划 {
      * @param nums
      * @return
      */
-    public int lengthOfLISOffical(int[] nums) {
-
-
-     return  0;
+    public int lengthOfLIS2(int[] nums) {
+        if (nums.length == 0) {
+             return 0;
+        }
+        int[] dp = new int[nums.length];
+        dp[0] =1;
+        int maxans = 1;
+        for (int i = 0; i < nums.length; i++) {
+             dp[i] =1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i]>nums[j]) {
+                    dp[i]= Math.max(maxans,dp[i]);
+                }
+            }
+            maxans = Math.max(maxans, dp[i]);
+        }
+        return  maxans;
     }
+
+    /**
+     * @Description
+     * @Date 2021/4/27 15:38
+     **/
+    @Test
+    public void test91() {
+        // 预期 3
+//        String demo1= "1201234";
+
+        String demo1= "1123";
+        System.out.println(numDecodings(demo1));
+
+    }
+    public int numDecodings(String s) {
+
+        if (s.equals("0")||s.startsWith("0")) {
+             return  0;
+        }
+        char[] chars = s.toCharArray();
+
+        int[] dp= new int[chars.length];
+        dp[0] = 1;
+        for (int i = 1; i < chars.length; i++) {
+             int sum = Character.getNumericValue(chars[i-1]) * 10  + Character.getNumericValue(chars[i]) ;
+            if ( sum>0  && sum<27 ) {
+                // 2101 中间为0 的情况
+                if (i!=chars.length-1) {
+                    if (Character.getNumericValue(chars[i+1]) ==0) {
+                        dp[i]= dp[i-1];
+                        continue;
+                    }
+                }
+                 dp[i] = dp[i-1]+1;
+            }else{
+                 dp[i]= dp[i-1];
+            }
+        }
+        return dp[chars.length-1];
+    }
+
+    /**
+     * @Description 最长有效括号
+     * @Date 2021/4/27 16:49
+     **/
+    @Test
+    public void test32() {
+    }
+
+    public int longestValidParentheses(String s) {
+
+        return 0;
+    }
+
 }

@@ -49,6 +49,17 @@ public class ArrayUtil {
         return arr;
     }
 
+    public static int[][] convertStringTwoDimensionIntArray(String str){
+        Integer[][] characters = JSON.parseObject(str, Integer[][].class);
+        int[][] arr=new int[characters.length][characters[0].length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = characters[i][j];
+            }
+        }
+        return arr;
+    }
+
     /**
      * string转换为int 数组
      * @param str
