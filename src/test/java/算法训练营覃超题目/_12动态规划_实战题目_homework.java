@@ -1,7 +1,13 @@
 package 算法训练营覃超题目;
 
+import com.sun.deploy.util.StringUtils;
 import org.junit.Test;
 import util.ArrayUtil;
+
+import javax.xml.stream.events.Characters;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author: twc
@@ -142,8 +148,8 @@ public class _12动态规划_实战题目_homework {
      **/
     @Test
     public void test363() {
-    }
-    public int maxSumSubmatrix(int[][] matrix, int k) {
+    }    public int maxSumSubmatrix(int[][] matrix, int k) {
+
          return 0;
     }
 
@@ -157,6 +163,150 @@ public class _12动态规划_实战题目_homework {
     public boolean canCross(int[] stones) {
 
         return true;
+    }
+
+    /**
+     * @Description
+     * @Date 2021/4/29 10:50
+     **/
+    @Test
+    public void test621() {
+        char[] chars = ArrayUtil.convertStringCharToArray("[\"A\",\"A\",\"A\",\"B\",\"B\",\"B\"]");
+        System.out.println(leastInterval(chars, 2));
+    }
+    public int leastInterval(char[] tasks, int n) {
+        Map<Character, Integer>  map =new HashMap<>();
+        for (char task : tasks) {
+            map.put(task, map.getOrDefault(task, 0) + 1);
+        }
+        map.entrySet().stream().sorted(Map.Entry.comparingByValue());
+
+        Map<Character,Integer>  timeMap = new HashMap<>();
+
+
+        int time =0;
+        for (int i = 0; i < tasks.length; i++) {
+            boolean wait = true;
+            for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+                 if(timeMap.getOrDefault(entry.getKey(),0)==0 && map.get(entry.getKey())>0){
+                      timeMap.put(entry.getKey(), n);
+                      map.put(entry.getKey(),entry.getValue()==0?0:entry.getValue()-1);
+                      wait= false;
+                 }else {
+                     if (!timeMap.containsKey(entry.getKey())) {
+
+                     } else if (timeMap.get(entry.getKey()) == 1) {
+                         timeMap.remove(entry.getKey());
+                     } else{
+                          timeMap.put(entry.getKey(),timeMap.get(entry.getKey())-1);
+                     }
+
+                 }
+            }
+            if (wait && timeMap.size()>0){
+                i--;
+            }
+            time++;
+        }
+
+        return  time-1;
+    }
+
+    /**
+     * @Description  回文子串
+     * @Date 2021/4/29 12:11
+     **/
+    @Test
+    public void test647() {
+        System.out.println(countSubstrings("aaa"));
+    }
+
+    public int countSubstrings(String s) {
+        int  count =0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i+1 ; j < s.length(); j++) {
+                String s1 = s.subSequence(i, j+1).toString();
+                StringBuilder sb =new StringBuilder();
+                String s2 = sb.append(s1).reverse().toString();
+                if (s1.equals(s2)) {
+                    count++;
+                }
+            }
+        }
+        return  count+s.length();
+
+    }
+
+    /**
+     * @Description
+     * @Date 2021/4/29 14:15
+     **/
+    @Test
+    public void test76() {
+        System.out.println(minWindow("ADOBECODEBANC", "ABC")); //BANC
+        System.out.println(minWindow("abc", "ac"));  //abc
+        System.out.println(minWindow("aa", "aaa")); //""
+        System.out.println(minWindow("bbaa", "aba"));  //baa
+
+    }
+
+    public String minWindow(String s, String t) {
+        if (s.length()<t.length()) {
+             return  "";
+        }
+        if (s.contains(t)) {
+            return t;
+        }
+        if (s.equals(t)) {
+            return s;
+        }
+        String res ="["+ s.intern();
+        char[] charsT = t.toCharArray();
+        Arrays.sort(charsT);
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j < s.length(); j++) {
+                String substring = s.substring(i, j + 1);
+                char[] chars = substring.toCharArray();
+                Arrays.sort(chars);
+                if (judgeContainsChar(chars, charsT) && chars.length < res.length()) {
+                    res = substring;
+                }
+            }
+        }
+         return  res.startsWith("[")?"":res;
+    }
+
+    public boolean judgeContainsChar(char[] source, char[] child) {
+        if(source.length< child.length){
+            return  false;
+        }
+        List<String> list = new ArrayList<>();
+        for (char c : source) {
+            list.add(String.valueOf(c));
+        }
+
+        for (char c : child) {
+            if (list.contains(String.valueOf(c))) {
+                 list.remove(String.valueOf(c));
+            }else {
+                return  false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @Description 戳气球
+     * @Date 2021/4/29 15:25
+     **/
+    @Test
+    public void test312() {
+    }
+
+    public int maxCoins(int[] nums) {
+
+        return  0;
     }
 
 

@@ -70,5 +70,9 @@ public class ArrayUtil {
         return ints;
     }
 
+    public static char[] convertStringCharToArray(String str){
+        char[] ints = JSON.parseObject(str, char[].class);
+        return ints;
+    }
 
 }
