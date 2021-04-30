@@ -8,13 +8,20 @@ import org.junit.Test;
  **/
 public class testChar {
     @Test
-    public void testChar() {
+    public void testCharEquale() {
         char a1 = '1';
         char a2 = '1';
         System.out.println(a1 == a2);
 
         System.out.println(a1);
         System.out.println('0');
+    }
+
+    @Test
+    public  void testChar(){
+         char a='a';
+        System.out.println(a+'7');
+
     }
 
 }

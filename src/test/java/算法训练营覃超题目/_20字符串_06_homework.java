@@ -2,7 +2,7 @@ package 算法训练营覃超题目;
 
 /**
  * @Author: twc
- * @Date 2021/4/19 15:34
+ * @Date 2021/4/30 14:58
  **/
-public class _20字符串 {
+public class _20字符串_06_homework {
 }
