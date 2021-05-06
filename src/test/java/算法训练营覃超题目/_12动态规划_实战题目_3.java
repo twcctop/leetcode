@@ -20,4 +20,29 @@ public class _12动态规划_实战题目_3 {
       return  0;
     }
 
+
+    //55
+    public boolean canJump(int[] nums) {
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > max) {
+                break;
+            }
+            max = Math.max(max, nums[i] + i);
+        }
+        return max >= nums.length-1;
+    }
+
+    //45
+    //不想写了
+    public int jump(int[] nums) {
+         int max=0;
+         int i=0;
+         while(max<nums.length-1){
+             for (int j = 0; j < i+nums[i]; j++) {
+                   max= Math.max(max,j+nums[j+i])
+
+             }
+         }
+    }
 }
