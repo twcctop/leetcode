@@ -40,9 +40,10 @@ public class _12动态规划_实战题目_3 {
          int i=0;
          while(max<nums.length-1){
              for (int j = 0; j < i+nums[i]; j++) {
-                   max= Math.max(max,j+nums[j+i])
+                   max= Math.max(max,j+nums[j+i]);
 
              }
          }
+         return 0;
     }
 }

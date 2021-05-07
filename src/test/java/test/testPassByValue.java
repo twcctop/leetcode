@@ -29,6 +29,11 @@ public class testPassByValue {
         changeStringValue(s);
         assertThat(s,is("a"));
 
+        //stringbuilder可以做传递使用
+        StringBuilder  sb =new StringBuilder("a");
+        changeStringBuilderValue(sb);
+        assertThat(sb.toString(),is("ab"));
+
         AtomicInteger ai = new AtomicInteger(1);
         changeAtomicIntNumber(ai);
         assertThat(ai.get(),is(2));
@@ -37,6 +42,11 @@ public class testPassByValue {
         changeTrueToFalse(flag);
         assertThat(flag,is(true));
 
+    }
+
+    private void changeStringBuilderValue(StringBuilder sb) {
+//         sb.append("b");
+           sb =new StringBuilder("ab");
     }
 
     public void changeIntNumber(int  number){
