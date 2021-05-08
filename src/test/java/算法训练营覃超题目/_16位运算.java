@@ -21,9 +21,9 @@ public class _16位运算 {
     }
 
     // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {int count = 0;
-        for
-        (int i = 0; i < 32; i++) {
+    public int hammingWeight(int n) {
+        int count = 0;
+        for (int i = 0; i < 32; i++) {
             int a = n >> i;
             int b = a & 1;
             if (b == 1) {

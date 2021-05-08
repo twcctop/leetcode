@@ -8,6 +8,7 @@ import util.ArrayUtil;
 import java.util.*;
 
 /**
+ *  https://leetcode-cn.com/problemset/lcof/
  * @Author: twc
  * @Date 2021/4/30 17:08
  **/
@@ -213,42 +214,48 @@ public class _offer {
      **/
     @Test
     public void test12() {
-        //demo1  true
-/*        char[][] chars = ArrayUtil.convertStringCharTwoDimensionArray("[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]");
+  /*      //demo1  true
+        char[][] chars = ArrayUtil.convertStringCharTwoDimensionArray("[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]");
         boolean abcced = exist(chars, "ABCCED");
         System.out.println(abcced);
 
         //demo2  true
         char[][] charsA  = new char[1][1];
         charsA[0][0] ='a';
-        System.out.println(exist(charsA, "a"));*/
+        System.out.println(exist(charsA, "a"));
 
 
         //demo3 false
-        //todo  无法通过的测试用例，没有考虑到回路的情况， footage失效
         char[][] chars1 = ArrayUtil.convertStringCharTwoDimensionArray("[[\"a\",\"a\"]]");
         System.out.println(exist(chars1, "aaa"));
+
+        //demo4  true
+        char[][] demoChar4 = ArrayUtil.convertStringCharTwoDimensionArray("[[\"C\",\"A\",\"A\"],[\"A\",\"A\",\"A\"],[\"B\",\"C\",\"D\"]]");
+        System.out.println(exist(demoChar4,"AAB"));*/
+
+
+        //demo5 true
+        //todo  路径看不清楚
+        char[][] demoChar5 = ArrayUtil.convertStringCharTwoDimensionArray("[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"E\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]");
+        System.out.println(exist(demoChar5,"ABCESEEEFS"));
     }
 
     //12
     public boolean exist(char[][] board, String word) {
-        StringBuilder sb = new StringBuilder();
         StringBuilder flag = new StringBuilder("a");
-        sb.append(word);
         char startChar = word.charAt(0);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == startChar) {
                       List<String> footage = new ArrayList<>();
-                      dfs12(board.clone(),sb,flag,i,j,footage);
+                      dfs12(board,word,flag,i,j,footage);
                 }
             }
         }
         return  flag.toString().equals("ab");
     }
 
-    private void dfs12(char[][] board, StringBuilder sb, StringBuilder flag, int i, int j, List<String> footage) {
-
+    private void dfs12(char[][] board, String sb, StringBuilder flag, int i, int j, List<String> footage) {
 
         if (flag.toString().equals("ab") || sb.length()==0) {
             return;
@@ -262,7 +269,8 @@ public class _offer {
                   flag.append("b");
                   return;
             }
-            StringBuilder shortedSb = sb.deleteCharAt(0);
+            String shortedSb = sb.substring(1);
+            System.out.println();
             dfs12(board,shortedSb,flag,i+1,j, footage);
             dfs12(board, shortedSb, flag,i-1,j, footage);
             dfs12(board, shortedSb, flag,i,j+1, footage);
@@ -271,5 +279,73 @@ public class _offer {
         }else {
             return;
         }
+    }
+
+    /**
+     * @Description
+     * @Date 2021/5/8 11:43
+     **/
+    @Test
+    public void test13() {
+        System.out.println(movingCount(11, 8, 16));
+    }
+
+    //13
+    public int movingCount(int m, int n, int k) {
+        if (k>m+n) {
+              k=Integer.MAX_VALUE;
+        }
+
+        System.out.println(k);
+        List<String> list= new ArrayList<>();
+        dfs13(m,n,k,0,0,list);
+        return list.size();
+    }
+
+    private void dfs13(int m, int n, int k, int r, int c, List<String> list) {
+        if (r < 0 || c < 0 || r >= m || c >= n) {
+            return;
+        }
+        if (list.contains("r" + r + "r" + c)) {
+            return;
+        }
+        if(get(r)+get(c)> k){
+            return;
+        }
+        list.add("r" + r + "r" + c);
+        dfs13(m,n,k,r+1,c,list);
+        dfs13(m,n,k,r-1,c,list);
+        dfs13(m,n,k,r,c+1,list);
+        dfs13(m,n,k,r+1,c-1,list);
+
+    }
+
+    private int get(int x) {
+        int res = 0;
+        while (x != 0) {
+            res += x % 10;
+            x /= 10;
+        }
+        return res;
+    }
+
+    // todo 数学推导
+    //14-1
+    public int cuttingRope(int n) {
+         return  0;
+    }
+
+
+    //15
+    public int hammingWeight(int n) {
+        int count =0;
+        for (int i = 0; i < 32; i++) {
+            int a= n>>i ;
+            if ((a&1)==1) {
+                 count++;
+            }
+        }
+
+         return  count;
     }
 }
