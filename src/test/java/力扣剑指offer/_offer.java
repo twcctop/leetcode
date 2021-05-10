@@ -348,4 +348,128 @@ public class _offer {
 
          return  count;
     }
+
+    //16  todo  快速幂
+    public double myPow(double x, int n) {
+
+         return  0;
+    }
+
+    //17
+
+    /**
+     * @Description
+     * @Date 2021/5/10 16:25
+     **/
+    @Test
+    public void test() {
+        int[] ints = printNumbers(1);
+        for (int anInt : ints) {
+            System.out.println(anInt);
+        }
+    }
+    public int[] printNumbers(int n) {
+        double pow = Math.pow(10, n)-1;
+        Integer maxLne = (int) pow;
+        int[] res = new int[maxLne];
+        for (Integer i = 0; i < maxLne; i++) {
+               res[i]= i+1;
+        }
+        return  res;
+    }
+
+    //18
+    public ListNode deleteNode(ListNode head, int val) {
+        ListNode dummyHead = new ListNode(-1, head);
+        ListNode pointer = dummyHead;
+        while (pointer.next != null) {
+            if(pointer.next.val==val){
+                pointer.next=pointer.next.next;
+            }else {
+                pointer = pointer.next;
+            }
+        }
+
+        return dummyHead.next;
+    }
+
+    //19  hard dp
+    public boolean isMatch(String s, String p) {
+
+        return  true;
+    }
+
+    //20  todo   状态机
+    public boolean isNumber(String s) {
+//         s.matches()
+        return  false;
+    }
+
+    //21
+
+    /**
+     * @Description
+     * @Date 2021/5/10 17:28
+     **/
+    @Test
+    public void test21() {
+        int[] ints = ArrayUtil.convertStringIntToArray("[1,2,3,4]");
+        System.out.println(Arrays.toString(exchange(ints)));
+    }
+    public int[] exchange(int[] nums) {
+        int[] res = new int[nums.length];
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 == 1) {
+                res[count] = nums[i];
+                count++;
+            }
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] % 2 == 0) {
+                res[count] = nums[i];
+                count++;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * @Description
+     * @Date 2021/5/10 17:42
+     **/
+    @Test
+    public void test22() {
+        ListNode node4 = new ListNode(4);
+        ListNode node3 = new ListNode(3, node4);
+        ListNode node2 = new ListNode(2, node3);
+        ListNode node1 = new ListNode(1, node2);
+
+        System.out.println(getKthFromEnd(node1, 2).val);
+    }
+    //22
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        int length =1;
+        ListNode countHead= head;
+        while (countHead.next!=null){
+            countHead= countHead.next;
+            length++;
+        }
+        int countNum = length-k+1;
+        int count=1;
+        ListNode res= head;
+        while(count!=countNum){
+            count++;
+            res= res.next;
+        }
+        return res;
+    }
+
+    //23
+    public ListNode reverseList(ListNode head) {
+         while(head.next!=null){
+              ListNode third= head.next.next;
+         }
+         return  null;
+    }
 }

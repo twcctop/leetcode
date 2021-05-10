@@ -32,4 +32,19 @@ public class offer_对应leetcode {
         }
         return dp[n];
     }
+
+    /**
+     * @Description
+     * @Date 2021/5/10 16:58
+     **/
+    @Test
+    public void test10() {
+
+
+    }
+
+    public boolean isMatch(String s, String p) {
+
+        return  true;
+    }
 }
