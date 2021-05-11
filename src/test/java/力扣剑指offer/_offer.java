@@ -465,11 +465,19 @@ public class _offer {
         return res;
     }
 
-    //23
+    //24
     public ListNode reverseList(ListNode head) {
-         while(head.next!=null){
-              ListNode third= head.next.next;
-         }
+        ListNode cur = head;
+        ListNode next = head.next;
+        ListNode third = null;
+        if(next!=null){
+            third = next.next;
+        }
+        while(cur!=null){
+                  next.next=cur;
+
+        }
+
          return  null;
     }
 }
