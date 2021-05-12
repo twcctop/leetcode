@@ -467,17 +467,49 @@ public class _offer {
 
     //24
     public ListNode reverseList(ListNode head) {
-        ListNode cur = head;
-        ListNode next = head.next;
-        ListNode third = null;
-        if(next!=null){
-            third = next.next;
-        }
+        ListNode pre=null;
+        ListNode cur= head;
         while(cur!=null){
-                  next.next=cur;
+            ListNode next= cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=next;
+        }
+        return  pre;
+    }
 
+    //25  合并两个链表
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummpyHead = new ListNode(-1);
+        ListNode cur = dummpyHead;
+        while (l1 != null || l2 != null) {
+            if (l1 == null) {
+                cur.next = l2;
+                l2 = l2.next;
+            } else if (l2 == null) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else if (l1.val <= l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else if (l1.val > l2.val) {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
         }
 
-         return  null;
+        return dummpyHead.next;
     }
+
+
+    //26
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        int[]  flag= new int[1];
+
+
+
+        return true;
+    }
+
 }
