@@ -503,13 +503,39 @@ public class _offer {
     }
 
 
-    //26
+    //26  树的子结构
     public boolean isSubStructure(TreeNode A, TreeNode B) {
-        int[]  flag= new int[1];
+        int[] res = new int[1];
+        foreachNode(A, B, res);
+        return res[0] == 1;
+    }
+
+    private void foreachNode(TreeNode a, TreeNode b, int[] res) {
+        if (res[0]==1) {
+            return;
+        }
+        int[] flag= new int[1];
+        judgeEqual(a,b,flag);
+
+    }
 
 
+    private void judgeEqual(TreeNode a, TreeNode b, int[] flag) {
+        if (a==null && b==null) {
+             return;
+        }
+        if (a!=null || b!=null) {
+             flag[0]=-1;
+             return;
+        }
+        if (a.val!=b.val) {
+            flag[0]= -1;
+            return;
+        }
+        judgeEqual(a.left,b.left, flag);
+        judgeEqual(a.right,b.right, flag);
 
-        return true;
+
     }
 
 }
