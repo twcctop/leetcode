@@ -502,39 +502,138 @@ public class _offer {
         return dummpyHead.next;
     }
 
+    /**
+     * @Description
+     * @Date 2021/5/14 14:38
+     **/
+    @Test
+    public void test26() {
 
-    //26  树的子结构
+
+         //demo1   123   31  false
+         /*TreeNode node2 = new TreeNode(2);
+         TreeNode node3 = new TreeNode(3);
+         TreeNode node1 = new TreeNode(1,node2,node3);
+
+         TreeNode sNode1 = new TreeNode(1);
+         TreeNode sNode3 = new TreeNode(3,sNode1,null);
+
+         System.out.println(isSubStructure(node1, sNode3));*/
+        //demo2  [1,0,1,-4,-3]
+        //[1,-4]   false
+
+
+    }
+
+    //26  todo 树的子结构
     public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (Objects.isNull(B)) {
+            return true;
+        }
+
         int[] res = new int[1];
         foreachNode(A, B, res);
         return res[0] == 1;
     }
 
+    //遍历a的每一个节点是否和b相等
     private void foreachNode(TreeNode a, TreeNode b, int[] res) {
         if (res[0]==1) {
             return;
         }
         int[] flag= new int[1];
+
         judgeEqual(a,b,flag);
+        //
+        if (flag[0]==0) {
+             res[0]=1;
+        }
+        if (Objects.nonNull(a.left)) {
+        foreachNode(a.left,b,res);
+        }
+        if (Objects.nonNull(a.right)) {
+        foreachNode(a.right,b,res);
+        }
 
     }
-
-
+    //判断两个树是否相等
     private void judgeEqual(TreeNode a, TreeNode b, int[] flag) {
+        if (flag[0]==1) {
+            return;
+        }
+
         if (a==null && b==null) {
              return;
         }
-        if (a!=null || b!=null) {
-             flag[0]=-1;
+        if (a ==null && b!=null) {
              return;
         }
         if (a.val!=b.val) {
-            flag[0]= -1;
+            flag[0]= 1;
             return;
         }
+        if (b.left==null && b.right==null) {
+            return;
+        }
+
         judgeEqual(a.left,b.left, flag);
         judgeEqual(a.right,b.right, flag);
+    }
 
+
+    // 题解， 题解和我的思路一样， 但我的过于麻烦了
+    boolean recur(TreeNode A,TreeNode B){
+        if (B==null) {
+            return  true;
+        }
+        if(A==null || A.val!=B.val ){
+            return false;
+        }
+        return recur(A.left,B.right) && recur(A.right, B.right);
+
+    }
+
+    //27
+    public TreeNode mirrorTree(TreeNode root) {
+        if (Objects.nonNull(root)) {
+            switchNode(root);
+        }
+        return root;
+    }
+
+    private void switchNode(TreeNode root) {
+          if(Objects.isNull(root.left) && Objects.isNull(root.right)){
+               return;
+          }
+          TreeNode temp =root.left;
+          root.left= root.right;
+          root.right=temp;
+        if (Objects.nonNull(root.left)) {
+            switchNode(root.left);
+        }
+        if (Objects.nonNull(root.right)) {
+            switchNode(root.right);
+        }
+    }
+
+    //28 对称二叉树
+    //demo1  [1,2,2,null,3,null,3]
+    public boolean isSymmetric(TreeNode root) {
+        TreeNode ori= root;
+        switchNode(root);
+        return equalNode(root,ori);
+    }
+    public boolean equalNode(TreeNode a,TreeNode b){
+        if (b==null && a==null) {
+             return  true;
+        }
+        if(a==null && b!=null){
+            return false;
+        }
+        if(a!=null && b==null){
+            return  false;
+        }
+        return equalNode(a.right,b.right) &&  equalNode(a.left, b.left);
 
     }
 
