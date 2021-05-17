@@ -637,4 +637,101 @@ public class _offer {
 
     }
 
+
+
+    public boolean isSymmetric2(TreeNode root) {
+        if (Objects.isNull(root)) {
+            return true;
+        }
+         return  compareSymme(root.left,root.right);
+    }
+
+    private boolean compareSymme(TreeNode left, TreeNode right) {
+        if (left==null && right!=null) {
+            return false;
+        }
+        if (left!=null && right==null) {
+            return false;
+        }
+        if (left==null && right==null) {
+            return true;
+        }
+        if (left.val!=right.val) {
+             return false;
+        }
+       return  compareSymme(left.left,right.right) &&compareSymme(left.right,right.left);
+    }
+
+    //29  todo 不难，但是很麻烦
+    public int[] spiralOrder(int[][] matrix) {
+        int r = matrix.length;
+        int c = matrix[0].length;
+        int i=0;
+        int j=0;
+        String direction = "left";
+        List list =new ArrayList();
+        while(true){
+            list.add(matrix[i][j]);
+            matrix[i][j]=-1;
+            if (j+1<r) {
+                  j=j+1;
+                  continue;
+            }
+            if(j+1==r && i+1<c){
+
+
+            }
+        }
+    }
+
+    //30,  todo 没做出 包含min函数的栈
+    class MinStack {
+        Stack<Integer> A;
+        Stack<Integer> B;
+
+        /** initialize your data structure here. */
+        public MinStack() {
+            A = new Stack<>();
+            B = new Stack<>();
+        }
+
+        public void push(int x) {
+            A.add(x);
+            if(B.isEmpty() || B.peek() >= x)
+                B.add(x);
+        }
+
+        public void pop() {
+            if(A.pop().equals(B.peek()))
+                B.pop();
+        }
+
+        public int top() {
+         return  A.peek();
+        }
+
+        public int min()  {
+            return B.peek();
+        }
+    }
+
+    //31,     todo 看不懂题目
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        Stack<Integer> A = new Stack<>();
+        Stack<Integer> B = new Stack<>();
+        for (int i : pushed) {
+            A.push(i);
+        }
+        for (int i : popped) {
+            B.add(i);
+        }
+        while(!A.isEmpty()){
+            Integer pop = A.pop();
+            if (pop.equals(B.peek())) {
+                B.pop();
+            }
+        }
+        return  B.isEmpty();
+    }
+
 }

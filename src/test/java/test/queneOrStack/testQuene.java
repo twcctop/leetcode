@@ -1,10 +1,11 @@
-package test;
+package test.queneOrStack;
 
 import org.junit.Test;
 
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @Author: twc
@@ -12,7 +13,7 @@ import java.util.Queue;
  **/
 public class testQuene {
 
-    // 测试栈
+    // 测试栈 quene
     @Test
     public void testQuene() {
         Queue<String> queue = new LinkedList<String>();
@@ -46,6 +47,7 @@ public class testQuene {
         System.out.println("############");
     }
 
+    @Test
     public void testDeque() {
         Deque<String> deque = new LinkedList<String>();
 
@@ -61,4 +63,16 @@ public class testQuene {
         }
         System.out.println(deque);
     }
+
+    @Test
+    public void testStack(){
+        Stack<Integer>  stack = new Stack<>();
+         stack.add(1);
+         stack.add(2);
+         stack.add(3);
+       while(!stack.empty()){
+           System.out.println(stack.pop());
+       }
+    }
+
 }
