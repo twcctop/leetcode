@@ -13,7 +13,7 @@ import java.util.*;
  * @Author: twc
  * @Date 2021/4/30 17:08
  **/
-public class _offer {
+public class _offer_01 {
     /**
      * @Description   剑指offer 03:数组中重复的数字   todo   超时？
      * @Dat
