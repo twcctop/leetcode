@@ -3,6 +3,7 @@ package 力扣剑指offer;
 import entity.ListNode;
 import entity.TreeNode;
 import org.junit.Test;
+import org.omg.PortableServer.ID_UNIQUENESS_POLICY_ID;
 import util.ArrayUtil;
 
 import java.util.*;
@@ -715,23 +716,139 @@ public class _offer {
         }
     }
 
-    //31,     todo 看不懂题目
+    //31,     todo 看不懂题目 ，自己做一遍
     public boolean validateStackSequences(int[] pushed, int[] popped) {
-        Stack<Integer> A = new Stack<>();
-        Stack<Integer> B = new Stack<>();
-        for (int i : pushed) {
-            A.push(i);
-        }
-        for (int i : popped) {
-            B.add(i);
-        }
-        while(!A.isEmpty()){
-            Integer pop = A.pop();
-            if (pop.equals(B.peek())) {
-                B.pop();
-            }
-        }
-        return  B.isEmpty();
+        return true;
     }
 
+    public boolean validateStackSequencesOfficial(int[] pushed, int[] popped) {
+        Stack<Integer> stack = new Stack<>();
+        int i =0;
+        for (int num : pushed) {
+            stack.push(num);
+            while (!stack.isEmpty()  && stack.peek()==popped[i]){
+                 stack.pop();
+                 i++;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    // 32
+    public int[] levelOrder(TreeNode root) {
+        List<Integer> list =new ArrayList<>();
+        printNode(root,list);
+       int[] res = new int[list.size()];
+        for (int i = 0; i < res.length; i++) {
+             res[i]= list.get(i);
+        }
+       return res;
+    }
+
+    // todo 自己写的 dfs 深度优先
+    private void printNode(TreeNode root, List<Integer> list) {
+        if (Objects.isNull(root)) {
+            return;
+        }
+        list.add(root.val);
+        if (root.left !=null) {
+            list.add(root.left.val);
+        }
+        printNode(root.left,list);
+        printNode(root.right,list);
+    }
+
+    // bfs 遍历二叉树
+    public int[] levelOrderOffical(TreeNode root) {
+        if (root == null) {
+            return new int[0];
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        List<Integer> list = new ArrayList<>();
+        while(!queue.isEmpty()){
+            TreeNode poll = queue.poll();
+            if (poll==null) {
+                continue;
+            }
+            list.add(poll.val);
+            if (poll.left!=null) {
+                queue.add(poll.left);
+            }
+            if (poll.right!=null) {
+                queue.add(poll.right);
+            }
+        }
+        int[] res = new int[list.size()];
+        for (int i = 0; i < res.length; i++) {
+            res[i]= list.get(i);
+        }
+        return res;
+    }
+
+    //32 -2
+    public List<List<Integer>> levelOrderOfficial(TreeNode root) {
+        if (root==null) {
+             return  new ArrayList<>();
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        List<List<Integer>> res = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            for (int i = queue.size(); i >0; i--) {
+                TreeNode poll = queue.poll();
+                list.add(poll.val);
+                if (poll.left!=null) {
+                      queue.add(poll.left);
+                }
+                if (poll.right!=null) {
+                    queue.add(poll.right);
+                }
+            }
+            res.add(list);
+        }
+        return  res;
+    }
+
+    //32-3  todo 没做出来
+    public List<List<Integer>> levelOrder3(TreeNode root) {
+        if (root==null) {
+            return  new ArrayList<>();
+        }
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        List<List<Integer>> res = new ArrayList<>();
+        boolean flag=true;
+        while (!queue.isEmpty()) {
+            List<Integer> list = new ArrayList<>();
+            for (int i = queue.size(); i >0; i--) {
+                TreeNode node = new TreeNode();
+                if (flag){
+                    node = queue.poll();
+                    if (node.left!=null) {
+                        queue.add(node.left);
+                    }
+                    if (node.right!=null) {
+                        queue.add(node.right);
+                    }
+                }else {
+                    node = queue.pollLast();
+                    if (node.right!=null) {
+                        queue.add(node.right);
+                    }
+                    if (node.left!=null) {
+                        queue.add(node.left);
+                    }
+                }
+                list.add(node.val);
+
+            }
+            flag= !flag;
+            res.add(list);
+        }
+        return  res;
+    }
+
+    //33 二叉搜索树
 }
