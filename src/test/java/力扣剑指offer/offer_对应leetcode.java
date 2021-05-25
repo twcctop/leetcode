@@ -3,6 +3,7 @@ package 力扣剑指offer;
 import org.junit.Test;
 
 /**
+ * @decription: 其实这个类没有必要存在， 不用写两遍重复的代码
  * @Author: twc
  * @Date 2021/5/8 14:20
  **/

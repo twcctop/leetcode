@@ -1,5 +1,6 @@
 package 力扣剑指offer;
 
+import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 import entity.ListNode;
 import entity.Node;
 import entity.TreeNode;
@@ -929,4 +930,75 @@ public class _offer_01_二叉树 {
     public Node copyRandomList(Node head) {
           return null;
     }
+
+    //36 todo 中序遍历
+    class Solution36 {
+        Node pre,head;
+        public Node treeToDoublyList(Node root) {
+            if (root==null) {
+                return  null;
+            }
+            dfs36(root);
+            head.left=pre;
+            pre.right = head;
+            return  head;
+        }
+
+        void dfs36(Node cur){
+            if (cur==null) {
+                return;
+            }
+            dfs36(cur.left);
+            if (pre!=null) {
+                pre.right = cur;
+            } else {
+                head= cur;
+            }
+            cur.left= pre;
+            pre = cur;
+            dfs36(cur.right);
+        }
+    }
+
+    //37 todo 序列化 反序列化二叉树
+    public class Codec {
+
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+             List<Integer>  list = new ArrayList<>();
+             List<TreeNode> nodeList=new ArrayList<>();
+             nodeList.add(root);
+             bfs37Ser(list,nodeList);
+             return  list.toString();
+        }
+
+        private void bfs37Ser(List<Integer> list, List<TreeNode> nodeList) {
+            if (!nodeList.isEmpty()) {
+                List<TreeNode> newList = new ArrayList<>();
+                for (TreeNode node : nodeList) {
+                    if (node!=null) {
+                        list.add(node.val);
+                        if (node.left != null) {
+                            newList.add(node.left);
+                        }
+                        if (node.right != null) {
+                            newList.add(node.right);
+                        }
+                    }
+                }
+                nodeList= newList;
+            }else{
+                //nodelist 为空
+                 return;
+            }
+            bfs37Ser(list,nodeList);
+        }
+
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+
+             return null;
+        }
+    }
+
 }
