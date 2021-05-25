@@ -1,6 +1,7 @@
 package 力扣剑指offer;
 
 import entity.ListNode;
+import entity.Node;
 import entity.TreeNode;
 import org.junit.Test;
 import org.omg.PortableServer.ID_UNIQUENESS_POLICY_ID;
@@ -13,7 +14,7 @@ import java.util.*;
  * @Author: twc
  * @Date 2021/4/30 17:08
  **/
-public class _offer_01 {
+public class _offer_01_二叉树 {
     /**
      * @Description   剑指offer 03:数组中重复的数字   todo   超时？
      * @Dat
@@ -850,5 +851,82 @@ public class _offer_01 {
         return  res;
     }
 
-    //33 二叉搜索树
+    //33 todo  二叉搜索树的后序遍历序列   二叉树左节点小于跟节？
+    public boolean verifyPostorder(int[] postorder) {
+         return recur33(postorder,0,postorder.length-1);
+    }
+
+    private boolean recur33(int[] postorder, int i, int j) {
+        if (i>=j) {
+             return true;
+        }
+        int p=i;
+        while(postorder[p]<postorder[j]){
+             p++;
+        }
+        int m=p;
+        while(postorder[p]>postorder[j]) p++;
+        return  p==j && recur33(postorder,i,m-1)&&recur33(postorder,m,j-1);
+    }
+
+
+    //34
+
+    /**
+     * @Description
+     * @Date 2021/5/24 18:25
+     **/
+    @Test
+    public void test34() {
+        //demo1
+//        TreeNode node1 =new TreeNode(1);
+//        TreeNode node3 =new TreeNode(3);
+//        TreeNode node2 =new TreeNode(2,node1,node3);
+//        System.out.println(pathSum(node2, 3));
+
+
+        TreeNode node7  =new TreeNode(7);
+        TreeNode node2  =new TreeNode(2);
+        TreeNode node11  =new TreeNode(11,node2,node7);
+        TreeNode node4  =new TreeNode(4,node11,null);
+        TreeNode node5  =new TreeNode(5,node4,null);
+        System.out.println(pathSum(node5,22));
+    }
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        List<List<Integer>> res=new ArrayList<>();
+        if (null==root) {
+             return res;
+        }
+        List list = new ArrayList();
+        list.add(root.val);
+        recur34(root,list,res,target);
+        return res;
+    }
+
+    private void recur34(TreeNode root, List<Integer> list, List<List<Integer>> res, int target) {
+        Integer sum = list.stream().reduce(0, Integer::sum);
+        //   if (Math.abs(sum) > Math.abs(target)) {
+        //     return;
+        // }
+        if (sum == target) {
+            // System.out.println("")
+            if (root.left == null && root.right == null) {
+                res.add(list);
+            }
+        }
+        List newList = new ArrayList();
+        newList.addAll(list);
+        if (Objects.nonNull(root.left)) {
+            list.add(root.left.val);
+            recur34(root.left, list, res, target);
+        }
+        if (Objects.nonNull(root.right)) {
+            newList.add(root.right.val);
+            recur34(root.right, newList, res, target);
+        }
+    }
+    //35  todo 没有题解，也 看不懂题目
+    public Node copyRandomList(Node head) {
+          return null;
+    }
 }
