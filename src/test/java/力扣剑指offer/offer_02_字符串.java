@@ -1,7 +1,10 @@
 package 力扣剑指offer;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -100,8 +103,118 @@ public class offer_02_字符串 {
             return  collect.get((collect.size()-1)/2);
         }
     }
-    //41  todo 连续子数组最大和
+    //42    连续子数组最大和  dp的题目,怎么搞成滑动窗口了
     public int maxSubArray(int[] nums) {
-        return  0;
+        int[] dp=new int[nums.length];
+        dp[0]=nums[0];
+        int max= dp[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i]= Math.max(dp[i-1]+nums[i],nums[i]);
+             max= Math.max(dp[i],max);
+        }
+
+        return  max;
     }
+
+    //43 todo hard
+    public int countDigitOne(int n) {
+
+         return  0;
+    }
+    //45 todo 找规律
+    public int findNthDigit(int n) {
+          int count=0;
+          int countN = n;
+          while ( countN/10 !=0){
+                 countN= countN/10;
+               count++;
+          }
+
+          return 0;
+    }
+    //46 数字翻译成字符串   !!好题
+    //todo 官方题解dp 看不懂
+    public int translateNum(int num) {
+        String src = String.valueOf(num);
+        int p = 0, q = 0, r = 1;
+        for (int i = 0; i < src.length(); i++) {
+            p = q;
+            q = r;
+            r = 0;
+            r += q;
+            if (i == 0) {
+                continue;
+            }
+
+            String pre = src.substring(i - 1, i + 1);
+            if (pre.compareTo("25")<= 0 && pre.compareTo("10")>=0) {
+                 r+=p;
+            }
+        }
+        return r;
+    }
+    //todo  dp kgod
+    /**
+        理解转移方程
+     *   dp[i]  = dp[i-1] + dp[i-2]
+     *   或者
+     *   dp[i] =  dp[i-1]
+      */
+    /**
+     * @Description
+     * @Date 2021/5/26 15:35
+     **/
+    @Test
+    public void test25() {
+        int i = translateNumKgod(25);
+        System.out.println(i);
+    }
+    public int translateNumKgod(int num) {
+        String s = String.valueOf(num);
+        int a=1,b=1;
+        for (int i = 2; i <= s.length(); i++) {
+             String  tmp= s.substring(i-2,i);
+             int c=0;
+            if (tmp.compareTo("10")>=0  && tmp.compareTo("25")<=0) {
+                  c=a+b;
+                  a=b;
+                  b=c;
+            }else{
+                c=b;
+                a=b;
+                b=c;
+            }
+
+        }
+         return  b;
+    }
+    //47
+    public int maxValue(int[][] grid) {
+        int row = grid.length;
+        int column = grid[0].length;
+        int[][] dp = new int[row + 1][column + 1];
+        for (int i = 1; i < row + 1; i++) {
+            for (int j = 1; j < column + 1; j++) {
+                dp[i][j] = Math.max(dp[i - 1][j],dp[i][j - 1]) + grid[i-1][j-1];
+            }
+        }
+        return dp[row][column];
+    }
+    //48  todo  "pwwkew" 测试用例无法通过
+    public int lengthOfLongestSubstring(String s) {
+        char[] chars = s.toCharArray();
+        int max=0;
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (list.contains(chars[i])) {
+                  max= Math.max(max,list.size());
+                  list.clear();
+            }else {
+                 list.add(chars[i]);
+            }
+        }
+        return max;
+    }
+
+    //
 }
