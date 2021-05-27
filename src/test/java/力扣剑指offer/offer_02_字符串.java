@@ -211,10 +211,95 @@ public class offer_02_字符串 {
                   list.clear();
             }else {
                  list.add(chars[i]);
-            }
-        }
+            } }
         return max;
     }
 
-    //
+    //49 丑数
+
+    /**
+     * @Description  todo 自己写的超时
+     *               todo dp又要推导
+     * @Date 2021/5/27 11:31
+     **/
+    @Test
+    public void test49() {
+        System.out.println(nthUglyNumber(1352));
+    }
+
+    public int nthUglyNumber(int n) {
+        int cur = 0;
+        int curNum = 0;
+        for (int i = 1; i < Integer.MAX_VALUE; i++) {
+            if (judgeUgl(i)) {
+                cur++;
+                if (cur == n) {
+                    curNum = i;
+                    return curNum;
+                }
+            }
+        }
+        return curNum;
+    }
+
+    private boolean judgeUgl(int i) {
+
+        while (i != 1) {
+
+            if (i % 2 == 0) {
+                i = i / 2;
+                continue;
+            } else if (i % 3 == 0) {
+                i = i / 3;
+                continue;
+            } else if (i % 5 == 0) {
+                i = i / 5;
+                continue;
+            }
+            return  false;
+        }
+         return  true;
+    }
+
+    /**
+     * @Description
+     * @Date 2021/5/27 14:36
+     **/
+    @Test
+    public void test50() {
+        System.out.println(firstUniqChar("cc"));
+    }
+    public char firstUniqChar(String s) {
+        char[] chars = s.toCharArray();
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (list.contains(chars[i])) {
+                 continue;
+            }
+            boolean flag = true;
+            for (int j = i + 1; j < chars.length; j++) {
+                if (chars[i] == chars[j]) {
+                    flag = false;
+                     list.add(chars[i]);
+                    break;
+                }
+            }
+            if (flag) {
+                return chars[i];
+            }
+        }
+        return ' ';
+    }
+
+    //53-1
+    public int search(int[] nums, int target) {
+         int count=0;
+        for (int num : nums) {
+            if (num==target) {
+                 count++;
+            }
+        }
+        return count;
+    }
+
 }

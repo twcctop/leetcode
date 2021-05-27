@@ -48,4 +48,16 @@ public class offer_对应leetcode {
 
         return  true;
     }
+
+    /**
+     * @Description  34
+     * @Date 2021/5/27 15:29
+     **/
+    @Test
+    public void test34() {
+
+    }
+    public int[] searchRange(int[] nums, int target) {
+        return  new int[2];
+    }
 }
