@@ -1,6 +1,10 @@
 package 力扣剑指offer;
 
 import entity.ListNode;
+import entity.TreeNode;
+import org.junit.Test;
+
+import java.util.*;
 
 /**
  * @Author: twc
@@ -47,5 +51,137 @@ public class offer_03_fjye {
         }
         return   null;
     }
+    //53   0- n-1 中缺失的数据
+    public int missingNumber(int[] nums) {
+        int j=nums.length-1;
+        int i=0;
+        while(i<=j){
+            int m= (i+j)/2;
+            if (nums[m]==m) {
+                i=m+1;
+            }else{
+                 j=m-1;
+            }
+        }
+      return  i;
+    }
+    //54  二叉树中第K大的节点
+    class solution54{
+        int res,k;
+        public int kthLargest(TreeNode root, int k) {
+            this.k=k;
+            //二叉树的中序遍历是递增的
+            dfs54(root);
 
+            return res;
+        }
+        private void dfs54(TreeNode root) {
+            if (root==null) {
+                return;
+            }
+            dfs54(root.right);
+            if (k==0) {
+                return;
+            }
+            if (--k==0) {
+                res=root.val;
+            }
+            dfs54(root.left);
+        }
+    }
+    //55二叉树的深度
+
+    /**
+     * @Description
+     * @Date 2021/5/28 11:03
+     **/
+    @Test
+    public void test55() {
+        TreeNode ndoe1=new TreeNode(1);
+        System.out.println(maxDepthBFs(ndoe1));
+    }
+    public int maxDepthBFs(TreeNode root) {
+         int[] depth=new int[1];
+         depth[0]=0;
+
+         Queue<TreeNode> queue = new LinkedList<>();
+         queue.add(root);
+         bfs55(depth,queue);
+         return depth[0];
+    }
+
+    private void bfs55(int[] depth, Queue<TreeNode> queue) {
+        while (!queue.isEmpty()){
+           depth[0]= depth[0]+1;
+            Queue<TreeNode> newQue= new LinkedList<>();
+            for (TreeNode treeNode : queue) {
+                if (null != treeNode.left) {
+                    newQue.add(treeNode.left);
+                }
+                if (null != treeNode.right) {
+                    newQue.add(treeNode.right);
+                }
+
+            }
+            queue.clear();
+            queue.addAll(newQue);
+        }
+    }
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+    }
+
+    //55-2  平衡二叉树
+    //todo 为什么不用加 状态判断符，直接返回true 或者false就可以
+    public boolean isBalanced(TreeNode root) {
+        if (null==root) {
+             return  true;
+        }
+        return  Math.abs(maxDepth(root.left)-maxDepth(root.right))<=1  &&   isBalanced(root.left) &&  isBalanced(root.right);
+    }
+
+    // 56-1  数组中数字出现次数
+    //todo 解法不对  应该用异或运算？ 异或看不懂
+    public int[] singleNumbers(int[] nums) {
+        List<Integer> resList= new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length-1; i++) {
+            if (nums[i-1]!=nums[i] && nums[i]!=nums[i+1]) {
+                resList.add(nums[i]);
+            }
+        }
+        if (nums[0]!=nums[1]) {
+             resList.add(nums[0]);
+        }
+        if (nums[nums.length-1]!=nums[nums.length-2]) {
+             resList.add(nums[nums.length-1]);
+        }
+        int[] res =new  int[resList.size()];
+        for (int i = 0; i < resList.size(); i++) {
+            res[i]= resList.get(i);
+        }
+        return  res;
+    }
+
+    //57 和为s的两个数字
+    public int[] twoSum(int[] nums, int target) {
+         Arrays.sort(nums);
+         int i=0,j=nums.length-1;
+         int[] res= new int[2];
+         while(i<j){
+             if (nums[i]+nums[j]==target) {
+                 res[0]=i;
+                 res[1]=j;
+                 return res;
+             }
+             if (nums[i]+nums[j]<target) {
+                  i++;
+             }else{
+                  j--;
+             }
+         }
+
+         return res;
+    }
 }
