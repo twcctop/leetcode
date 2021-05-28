@@ -165,6 +165,7 @@ public class offer_03_fjye {
     }
 
     //57 和为s的两个数字
+    //todo  错了
     public int[] twoSum(int[] nums, int target) {
          Arrays.sort(nums);
          int i=0,j=nums.length-1;
