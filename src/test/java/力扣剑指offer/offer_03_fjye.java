@@ -165,15 +165,13 @@ public class offer_03_fjye {
     }
 
     //57 和为s的两个数字
-    //todo  错了
     public int[] twoSum(int[] nums, int target) {
-         Arrays.sort(nums);
          int i=0,j=nums.length-1;
          int[] res= new int[2];
          while(i<j){
              if (nums[i]+nums[j]==target) {
-                 res[0]=i;
-                 res[1]=j;
+                 res[0]=nums[i];
+                 res[1]=nums[j];
                  return res;
              }
              if (nums[i]+nums[j]<target) {
@@ -182,7 +180,45 @@ public class offer_03_fjye {
                   j--;
              }
          }
+        return  res;
+    }
+    //57-2  tofu
+    // 和为s的连续正数序列   todo 看答案做的 , 答案也不对
+    public int[][] findContinuousSequence(int target) {
+        int i=1,j=2,s=3;
+        List<int[]> res = new ArrayList<>();
+        while(i<j){
+            if (s==target) {
+                int[] ans = new int[j - i + 1];
+                for (int k = i; k <= j; k++) {
+                    ans[k - i] = k;
+                    res.add(ans);
+                }
+            }
+            if (s>=target) {
+                 s-=i;
+                 i++;
+            }else {
+                 j++;
+                 s+=j;
+            }
+        }
 
-         return res;
+        return res.toArray(new int[0][]);
+    }
+
+    // 58 翻转单词顺序  todo 实在无聊，不做了
+    public String reverseWords(String s) {
+        String[] strs = s.trim().split(" ");
+        return " ";
+    }
+    //58-2
+    public String reverseLeftWords(String s, int n) {
+        return " ";
+    }
+
+    //59-1  滑动窗口的最大值
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        return null;
     }
 }
