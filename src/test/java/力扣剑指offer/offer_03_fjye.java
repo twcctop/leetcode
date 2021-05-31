@@ -217,8 +217,33 @@ public class offer_03_fjye {
         return " ";
     }
 
-    //59-1  滑动窗口的最大值
+    //59-1  滑动窗口的最大值  todo 单调栈 做不出来
     public int[] maxSlidingWindow(int[] nums, int k) {
         return null;
     }
+
+    //59-2 队列的最大值    todo  时间复杂度不是O1
+    class MaxQueue {
+
+        public MaxQueue() {
+        }
+
+        public int max_value() {
+         return  0;
+        }
+
+        public void push_back(int value) {
+
+        }
+
+        public int pop_front() {
+            return  0;
+        }
+    }
+    //60
+    public double[] dicesProbability(int n) {
+        return null;
+    }
+
+
 }
