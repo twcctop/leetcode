@@ -3,6 +3,7 @@ package 力扣剑指offer;
 import entity.ListNode;
 import entity.TreeNode;
 import org.junit.Test;
+import util.ArrayUtil;
 
 import java.util.*;
 
@@ -240,10 +241,134 @@ public class offer_03_fjye {
             return  0;
         }
     }
-    //60
+    //60  todo   递归错误
     public double[] dicesProbability(int n) {
+        double[]  res1= {0.16667,0.16667,0.16667,0.16667,0.16667,0.16667};
+        Map<Integer,double[]>  dp = new HashMap<>();
+        dp.put(1,res1);
+        for (int i = 0; i < n; i++) {
+            if (dp.containsKey(i)) {
+                 return dp.get(i);
+            }
+
+        }
         return null;
     }
 
+    // 秒极  todo   KGod
+    public double[] dicesProbabilityKgod(int n) {
+        double[] dp = new double[6];
+        Arrays.fill(dp, 1.0 / 6.0);
+        for (int i = 2; i <= n; i++) {
+            double[] tmp = new double[5 * i + 1];
+            for (int j = 0; j < dp.length; j++) {
+                for (int k = 0; k < 6; k++) {
+                    // 加法秒极
+                    tmp[j + k] += dp[j] / 6.0;
+                }
+            }
+            dp = tmp;
+        }
+        return dp;
+    }
+
+
+    //61 扑克牌中的顺子
+
+    /**
+     * @Description
+     * @Date 2021/5/31 14:42
+     **/
+    @Test
+    public void test61() {
+        int[] ints = ArrayUtil.convertStringIntToArray("[0,0,8,5,4]");
+        System.out.println(isStraight(ints));
+    }
+    public boolean isStraight(int[] nums) {
+        Arrays.sort(nums);
+        int ghostCount=0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i]==0) {
+                 ghostCount++;
+                 continue;
+            }
+            if (i==0) {
+                 continue;
+            }
+            if(nums[i]==nums[i-1] ){
+                return false;
+            }
+            if (nums[i] -1 ==nums[i-1]) {
+                 continue;
+            }else{
+                  if(ghostCount==0&& nums[i-1]!=0){
+                       return  false;
+                  }else{
+                       if(nums[i-1]==0){
+                            continue;
+                       }
+                      int  gap=nums[i]-1-nums[i-1];
+                      if (gap>ghostCount) {
+                          return false;
+                      }else{
+                          ghostCount=ghostCount-gap;
+                      }
+                  }
+            }
+        }
+        return true;
+    }
+    //62 圆圈中最后剩下的数字  todo 约瑟夫环问题
+    public int lastRemaining(int n, int m) {
+         return 0;
+    }
+    //63 股票的最大利润
+    public int maxProfit(int[] prices) {
+         int minValue=Integer.MAX_VALUE;
+         int maxProfit=0;
+        for (int i = 0; i < prices.length; i++) {
+             minValue = Math.min(minValue,prices[i]);
+             maxProfit=Math.max(maxProfit,prices[i]-minValue);
+        }
+        return  maxProfit;
+    }
+    //64  todo 奇技淫巧
+    public int sumNums(int n) {
+        return  0;
+    }
+
+    //65 todo 位运算   不用运算符号算加法
+    public int add(int a, int b) {
+         return  0;
+    }
+
+    //66 构建乘积数组  todo 不让用除法
+    public int[] constructArr(int[] a) {
+       return  null;
+    }
+
+    //67  todo 应该用状态机 ？  'c' 转 int方法也不对
+    public int strToInt(String s) {
+        if (s.length()==0) {
+             return 0;
+        }
+        int res=0;
+        char[] chars = s.toCharArray();
+        for (int i = chars.length-1; i >=0 ; i--) {
+            if (chars[i]==' ') {
+                 return res;
+            }
+            res=(int)chars[i] + res*10;
+        }
+        return  res;
+    }
+
+    //68 二叉搜索树的公共祖先  todo
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+        return null;
+    }
+
+    //
 
 }
