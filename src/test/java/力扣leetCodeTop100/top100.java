@@ -85,7 +85,7 @@ public class top100 {
     }
 
     /**
-     * @Description
+     * @Description   todo 无重复字符的最长子串   滑动窗口
      * @Date 2021/6/1 15:35
      **/
     @Test
@@ -93,7 +93,14 @@ public class top100 {
 
     }
     public int lengthOfLongestSubstring(String s) {
-         return  0;
+        int maxlen=0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+
+
+        }
+
+        return  0;
 
     }
 }
