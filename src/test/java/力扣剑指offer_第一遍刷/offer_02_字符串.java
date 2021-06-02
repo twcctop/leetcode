@@ -1,10 +1,9 @@
-package 力扣剑指offer;
+package 力扣剑指offer_第一遍刷;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,4 +1,4 @@
-package 力扣剑指offer;
+package 力扣剑指offer_第一遍刷;
 
 import org.junit.Test;
 
