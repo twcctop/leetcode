@@ -1,11 +1,11 @@
 package leetbook_图解算法数据结构;
 
 import entity.Node;
+import org.junit.Test;
+import util.ArrayUtil;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Stack;
+import javax.swing.*;
+import java.util.*;
 
 /**
  * @Author: twc
@@ -146,21 +146,86 @@ public class _01_数据结构 {
 
 
     //59-1 滑动窗口的最大值  todo 值都是0
+
+    /**
+     * @Description
+     * @Date 2021/6/3 12:17
+     **/
+    @Test
+    public void test59_1() {
+        int[] ints = ArrayUtil.convertStringIntToArray("[1,3,-1,-3,5,3,6,7]");
+        int[] ints1 = maxSlidingWindow(ints, 3);
+        ArrayUtil.printArray(ints1);
+    }
+    // todo for循环 超时
     public int[] maxSlidingWindow(int[] nums, int k) {
         int length = nums.length;
         if (length==0) {
             return  new int[0];
         }
         int[] res = new  int[length+1-k];
-        for (int i = 0; i < nums.length-k; i++) {
+        for (int i = 0; i <= nums.length-k; i++) {
             int max=nums[i];
             //取方块最大值
             for (int j = i; j < k+i; j++) {
                 max=Math.max(max,nums[j]);
             }
-            nums[i]= max;
+            res[i]= max;
         }
         return res;
-
     }
+
+    //todo 采用deque 直接删除小于添加值的元素
+    public int[] maxSlidingWindowKGod(int[] nums, int k) {
+        if (nums.length==0 || k==0) {
+             return  new int[0];
+        }
+        int length = nums.length;
+        if (length==0) {
+            return  new int[0];
+        }
+        int[] res = new  int[length+1-k];
+
+        Deque<Integer> deque = new LinkedList<>();
+        for (int j = 0, i=1-k; j < nums.length; j++,i++) {
+             //删除deque中对应的nums[i-1]
+            if (i>0 && deque.peekFirst()== nums[i-1]) {
+                deque.removeFirst();
+            }
+            //保持deque递减
+            while(!deque.isEmpty() && deque.peekLast()<nums[j]){
+                 deque.removeLast();
+            }
+            deque.addLast(nums[j]);
+            //记录窗口最大值
+            if (i>0) {
+                 res[i]= deque.peekFirst();
+            }
+
+        }
+
+        return res;
+    }
+
+    //59-2 队列的最大值   todo 队列最大值的问题一直搞不明白
+    class MaxQueue {
+
+        public MaxQueue() {
+
+        }
+
+        public int max_value() {
+             return 0;
+        }
+
+        public void push_back(int value) {
+
+        }
+
+        public int pop_front() {
+            return 0;
+        }
+    }
+
+    //
 }

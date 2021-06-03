@@ -2,6 +2,9 @@ package util;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author: twc
  * @Date 2021/4/17 23:43
@@ -75,4 +78,11 @@ public class ArrayUtil {
         return ints;
     }
 
+    public static void printArray(int[] ints1) {
+         List list =new ArrayList<>();
+        for (int i = 0; i < ints1.length; i++) {
+            list.add(ints1[i]);
+        }
+        System.out.println(list);
+    }
 }
