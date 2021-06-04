@@ -208,24 +208,61 @@ public class _01_数据结构 {
     }
 
     //59-2 队列的最大值   todo 队列最大值的问题一直搞不明白
+    //为什么要维护两个队列
     class MaxQueue {
-
-        public MaxQueue() {
-
+        Deque<Integer> A;
+        Deque<Integer> B;
+        public MaxQueue( ) {
+            A=new LinkedList<>();
+            B=new LinkedList<>();
         }
 
         public int max_value() {
-             return 0;
+            return    B.isEmpty()?-1:B.peek();
         }
 
         public void push_back(int value) {
-
+           while(!B.isEmpty() && B.peekLast()<value){
+                B.pollLast();
+           }
+           //todo 注意：offerlast 和push的区别
+           B.offerLast(value);
+           A.offerLast(value);
         }
 
         public int pop_front() {
-            return 0;
+            if (!A.isEmpty()&& !B.isEmpty() && A.peekFirst().equals(B.peekFirst())) {
+                 B.removeFirst();
+            }
+            if (!A.isEmpty()) {
+              return   A.removeFirst();
+            }
+             return  -1;
         }
     }
 
-    //
+    //67 字符串转换为数字
+    //todo 抄答案的
+    public int strToInt(String str) {
+        char[] c = str.trim().toCharArray();
+        if (c.length==0) {
+             return 0;
+        }
+        int res=0, bndcry=Integer.MAX_VALUE/10;
+        int i=1,sign=1;
+        if (c[0]=='-') {
+            sign=-1;
+        }else if(c[0]!='+'){
+           i=0;
+        }
+        for(int j = i; j < c.length; j++) {
+            if(c[j] < '0' || c[j] > '9') break;
+            if(res > bndcry || res == bndcry && c[j] > '7') return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            res = res * 10 + (c[j] - '0');
+        }
+
+        return  sign* res;
+
+
+    }
 }
