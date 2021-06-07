@@ -1,10 +1,9 @@
-package leetbook_图解算法数据结构;
+package leetbook.图解算法数据结构;
 
 import entity.Node;
 import org.junit.Test;
 import util.ArrayUtil;
 
-import javax.swing.*;
 import java.util.*;
 
 /**
