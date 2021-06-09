@@ -1,5 +1,6 @@
 package leetbook.初级算法;
 
+import com.sun.javafx.logging.JFRInputEvent;
 import org.junit.Test;
 import util.ArrayUtil;
 
@@ -17,14 +18,24 @@ public class _02数组 {
     public void test() {
         System.out.println(removeDuplicates(ArrayUtil.convertStringIntToArray("[1,1,2]")));
     }
-    public int removeDuplicates(int[] nums) {
-        int count=1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i]!=nums[i-1]) {
-                 count++;
+    public int removeDuplicates(int[] nums){
+        int slow=0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i==0) {
+                slow++;
+                continue;
             }
-
+            if (nums[i]==nums[i-1]) {
+                continue;
+            }else {
+                nums[slow]=nums[i];
+                slow++;
+            }
         }
-        return count;
+        return  slow;
+    }
+
+    public int maxProfit(int[] prices) {
+         return  0;
     }
 }
