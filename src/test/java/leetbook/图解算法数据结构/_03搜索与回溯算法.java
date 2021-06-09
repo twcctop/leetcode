@@ -1,13 +1,11 @@
 package leetbook.图解算法数据结构;
 
+import entity.Node;
 import entity.TreeNode;
 import org.junit.Test;
 import util.ArrayUtil;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: twc
@@ -209,15 +207,191 @@ public class _03搜索与回溯算法 {
         return  judge28(left.left,right.right)&&judge28(left.right,right.left);
     }
 
-     //32-1
+     //32-1  todo 可以优化一点
      public int[] levelOrder(TreeNode root) {
+         if (root==null) {
+              return  new int[0];
+         }
+
          List<Integer>  list= new ArrayList<>();
          Deque<TreeNode> deque =new LinkedList();
          deque.addLast(root);
+         List<TreeNode> nodeList = new ArrayList<>();
          while (!deque.isEmpty()){
 
-             TreeNode treeNode = deque.pollFirst();
-             list.add(treeNode.val)
+             while (!deque.isEmpty()) {
+                   nodeList.add(deque.pollFirst());
+             }
+             for (TreeNode  node : nodeList) {
+                  if(node.left!=null)  deque.addLast(node.left);
+                  if(node.right!=null) deque.addLast(node.right);
+                  list.add(node.val);
+             }
+             nodeList.clear();
          }
+         int[] res= new  int[list.size()];
+         for (int i = 0; i < list.size(); i++) {
+              res[i]= list.get(i);
+         }
+
+         return  res;
      }
+
+     //32-2
+     public List<List<Integer>> levelOrder2(TreeNode root) {
+         if (root==null) {
+             return new ArrayList<>();
+         }
+         List<List<Integer>>  res= new ArrayList<>();
+         Deque<TreeNode> deque =new LinkedList();
+         deque.addLast(root);
+         List<TreeNode> nodeList = new ArrayList<>();
+         while (!deque.isEmpty()){
+             while (!deque.isEmpty()) {
+                 nodeList.add(deque.pollFirst());
+             }
+             List<Integer>  list= new ArrayList<>();
+             for (TreeNode  node : nodeList) {
+                 if(node.left!=null)  deque.addLast(node.left);
+                 if(node.right!=null) deque.addLast(node.right);
+                 System.out.println("node的值"+node.val);
+                 list.add(node.val);
+             }
+             System.out.println(list);
+             res.add(list);
+             nodeList.clear();
+         }
+         return  res;
+     }
+
+    //从上往下打印二叉树3
+    public List<List<Integer>> levelOrder3(TreeNode root) {
+
+        if (root==null) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>>  res= new ArrayList<>();
+        Deque<TreeNode> deque =new LinkedList();
+        deque.addLast(root);
+        List<TreeNode> nodeList = new ArrayList<>();
+        int flag=1;
+        while (!deque.isEmpty()){
+            while (!deque.isEmpty()) {
+                nodeList.add(deque.pollFirst());
+            }
+            List<Integer>  list= new ArrayList<>();
+            for (TreeNode  node : nodeList) {
+                if(node.left!=null)  deque.addLast(node.left);
+                if(node.right!=null) deque.addLast(node.right);
+                list.add(node.val);
+            }
+            if(flag==-1){
+                Collections.reverse(list);
+            }
+            res.add(list);
+            nodeList.clear();
+            flag=-flag;
+        }
+        return  res;
+    }
+
+    //34 二叉树中和为某个数字的数
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        List<List<Integer>>  res=  new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        dfs34(root,res,target,list);
+        return res;
+    }
+
+    private void dfs34(TreeNode root, List<List<Integer>> res, int target, List<Integer> list) {
+        if (root==null) {
+             return;
+        }
+        int count=root.val;
+        for (Integer integer : list) {
+             count+=integer;
+        }
+
+        if (list.size()>3) {
+            System.out.println(root.val +"::" +list);
+        }
+
+        if (count==target&&root.left==null&&root.right==null) {
+            List<Integer> a = new ArrayList<>(list);
+            a.add(root.val);
+            res.add( a);
+            return;
+        }
+
+        List<Integer> b= new ArrayList<>(list);
+        b.add(root.val);
+        dfs34(root.left,res,target,b);
+        dfs34(root.right,res,target,b);
+    }
+
+    //36 二叉搜索树与双向链表  todo 二叉树的中序遍历与双向链表
+    class solution36{
+        Node pre,head;
+        public Node treeToDoublyList(Node root) {
+            if (root==null) {
+                return null;
+            }
+            dfs36(root);
+            head.left= pre;
+            pre.right= head;
+            return  head;
+        }
+
+        private void dfs36(Node cur) {
+            if (cur==null) {
+                 return;
+            }
+            dfs36(cur.left);
+            if (pre!=null) {
+                pre.right=cur;
+            }else {
+                head =cur;
+            }
+            cur.left=pre;
+            pre= cur;
+            dfs36(cur.right);
+        }
+
+    }
+
+
+    //37 序列化二叉树
+    public class Codec {
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+        List<Integer> list = new ArrayList();
+            if (root==null) {
+                 return  null;
+            }
+            dfs37(root,list);
+            return list.toString();
+        }
+
+        private void dfs37(TreeNode root, List<Integer> list) {
+            if (root==null) {
+                return;
+            }
+            list.add(root.val);
+            dfs37(root.left, list);
+            dfs37(root.right, list);
+        }
+
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+            char[] chars = data.toCharArray();
+            List<Integer> list =new ArrayList<>();
+            for (char aChar : chars) {
+                 list.add(Integer.valueOf(aChar));
+            }
+            return null;
+        }
+    }
+
+
+
 }
