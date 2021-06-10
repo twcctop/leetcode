@@ -359,8 +359,32 @@ public class _03搜索与回溯算法 {
 
     }
 
+    //36  二叉搜索树的中序遍历
+    public Node treeToDoublyList(Node root) {
+         Node head=new Node();
+         Node cur=head;
+         dfs36(root,cur,head);
+         return  head;
+    }
+
+    private void dfs36(Node root, Node cur, Node head) {
+        cur=root;
+
+        if (head.right==null) {
+             head.right=cur;
+        }else {
+
+
+        }
+
+        dfs36(root.left,cur,head);
+        dfs36(root.right,cur,head);
+
+    }
+
 
     //37 序列化二叉树
+    //todo error 不能使用  list 前中后序 遍历的情况，null的情况无法保存
     public class Codec {
         // Encodes a tree to a single string.
         public String serialize(TreeNode root) {
@@ -389,6 +413,20 @@ public class _03搜索与回溯算法 {
                  list.add(Integer.valueOf(aChar));
             }
             return null;
+        }
+    }
+
+
+    public class CodecKgod {
+
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+            return  null;
+        }
+
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+          return  null;
         }
     }
 
