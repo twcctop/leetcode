@@ -154,7 +154,7 @@ public class _01_数据结构 {
     public void test59_1() {
         int[] ints = ArrayUtil.convertStringIntToArray("[1,3,-1,-3,5,3,6,7]");
         int[] ints1 = maxSlidingWindow(ints, 3);
-        ArrayUtil.printArray(ints1);
+        ArrayUtil.printIntArray(ints1);
     }
     // todo for循环 超时
     public int[] maxSlidingWindow(int[] nums, int k) {

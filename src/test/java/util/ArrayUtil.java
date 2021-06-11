@@ -78,11 +78,21 @@ public class ArrayUtil {
         return ints;
     }
 
-    public static void printArray(int[] ints1) {
-         List list =new ArrayList<>();
+    public static void printIntArray(int[] ints1) {
+        List list =new ArrayList<>();
         for (int i = 0; i < ints1.length; i++) {
             list.add(ints1[i]);
         }
         System.out.println(list);
     }
+
+    public static void printStringArray(String[] strs) {
+        List list =new ArrayList<>();
+        for (int i = 0; i < strs.length; i++) {
+            list.add(strs[i]);
+        }
+        System.out.println(list);
+    }
+
+
 }

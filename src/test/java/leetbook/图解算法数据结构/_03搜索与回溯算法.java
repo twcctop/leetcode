@@ -2,6 +2,7 @@ package leetbook.图解算法数据结构;
 
 import entity.Node;
 import entity.TreeNode;
+import jdk.nashorn.internal.ir.CallNode;
 import org.junit.Test;
 import util.ArrayUtil;
 
@@ -428,6 +429,152 @@ public class _03搜索与回溯算法 {
         public TreeNode deserialize(String data) {
           return  null;
         }
+    }
+
+     //38 字符串的排列
+
+    /**
+     * @Description
+     * @Date 2021/6/11 11:17
+     **/
+    @Test
+    public void test38() {
+        ArrayUtil.printStringArray(permutation("aab"));
+    }
+     public String[] permutation(String s) {
+         char[] chars = s.toCharArray();
+          List<Character> charsList= new ArrayList<>();
+         for (char aChar : chars) {
+             charsList.add(aChar);
+         }
+         List<Character> cur= new ArrayList<>();
+         List<String> list = new ArrayList<>();
+         dfs38(charsList,list, cur);
+
+         String[] res= new String[list.size()];
+         for (int i = 0; i < list.size(); i++) {
+             res[i]= list.get(i);
+         }
+         return res;
+     }
+
+    private void dfs38(List<Character> charsList, List<String> list, List<Character> cur) {
+        if (charsList.size()==0) {
+            StringBuilder sb = new StringBuilder();
+            for (Character character : cur) {
+                sb.append(character);
+            }
+            String curStr = sb.toString();
+
+            if (list.contains(curStr)) {
+                return;
+            }
+            list.add(curStr);
+            return;
+        }
+
+        for (char aChar : charsList) {
+            List<Character>  newCur = new ArrayList<>(cur);
+            newCur.add(aChar);
+            List<Character> removedCharlist = new ArrayList<>(charsList);
+
+            removedCharlist.remove((Character) aChar);
+            dfs38(removedCharlist,list,newCur);
+        }
+    }
+
+     //54  二叉搜索树的第k
+    //  todo 看不懂   为什么遍历要放在中间
+    public int kthLargest(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        dfs54(root,list);
+        Collections.reverse(list);
+        return  list.get(k-1);
+    }
+
+    private void dfs54(TreeNode root, List<Integer> list) {
+        if (root==null) {
+             return;
+        }
+        dfs54(root.left,list);
+        list.add(root.val);
+        dfs54(root.right,list);
+    }
+
+    //55-1  二叉树的深度
+    public int maxDepth(TreeNode root) {
+        if (root==null) {
+             return 0;
+        }
+        int res=0;
+        Deque<TreeNode> deque = new LinkedList<>();
+        deque.addLast(root);
+        List<TreeNode> list=  new ArrayList<>();
+        while (!deque.isEmpty()) {
+            res++;
+            while (!deque.isEmpty()) {
+                TreeNode treeNode = deque.pollFirst();
+                if (treeNode==null) {
+                     continue;
+                }
+                list.add(treeNode.left);
+                list.add(treeNode.right);
+            }
+            for (TreeNode treeNode : list) {
+                if (treeNode==null) {
+                    continue;
+                }
+                deque.addLast(treeNode);
+            }
+            list.clear();
+        }
+        return  res;
+    }
+    //55-2 平衡二叉树
+    public boolean isBalanced(TreeNode root) {
+        if (root==null) {
+             return true;
+        }
+        if (Math.abs(getMaxDepth(root.left)-getMaxDepth(root.right))>1) {
+            return false;
+        }
+        return isBalanced(root.left)&&isBalanced(root.right);
+    }
+
+    //获取最大深度
+    public int getMaxDepth(TreeNode root){
+        if (root==null) {
+             return 0;
+        }
+        return  Math.max(getMaxDepth(root.left),getMaxDepth(root.right))+1;
+    }
+
+    //求和
+    public int sumNums(int n) {
+        boolean x= n>1 && (n+=sumNums(n-1))>0;
+        return n;
+    }
+
+
+    //todo
+    //68-1  二叉树的最近公共祖先
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        while (root!=null) {
+                 if(root.val< p.val && root.val<q.val){
+                       //遍历到右节点
+                      root=root.right;
+                 }else  if(root.val> p.val && root.val>q.val){
+                      //遍历到左节点
+                      root=root.left;
+                 }else{
+                      break;
+                 }
+        }
+        return root;
+    }
+    //68-2 二叉树的公共祖先
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+          return null;
     }
 
 
