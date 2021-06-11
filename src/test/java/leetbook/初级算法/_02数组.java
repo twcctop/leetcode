@@ -4,6 +4,8 @@ import com.sun.javafx.logging.JFRInputEvent;
 import org.junit.Test;
 import util.ArrayUtil;
 
+import java.util.Arrays;
+
 /**
  * @Author: twc
  * @Date 2021/6/7 11:59
@@ -36,6 +38,69 @@ public class _02数组 {
     }
 
     public int maxProfit(int[] prices) {
-         return  0;
+         int res=0;
+         int minVa = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+             minVa=Math.min(minVa,prices[i]);
+            if (prices[i]>minVa) {
+                  res+= prices[i]-minVa;
+                  minVa=prices[i];
+            }
+
+        }
+         return  res;
+    }
+
+    public void rotate(int[] nums, int k) {
+        k=k%nums.length;
+        if (k==0) {
+             return;
+        }
+        int[]  res=new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            int offset=i-k;
+            if (offset < 0) {
+                offset += nums.length;
+            }
+            res[i]= nums[offset];
+        }
+        System.arraycopy(res,0,nums,0,res.length);
+    }
+
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i]==nums[i-1]) {
+                 return  true;
+            }
+        }
+        return false;
+    }
+
+    //todo 时间复杂度不对
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        if (nums.length==1) {
+            return nums[0];
+        }
+
+        if (nums[0]!=nums[1]) {
+             return nums[0];
+        }
+        for (int i = 1; i < nums.length-1; i++) {
+            if (nums[i]!=nums[i-1] && nums[i]!=nums[i+1]) {
+                 return  nums[i];
+            }
+        }
+        if(nums[nums.length-1]!=nums[nums.length-2]){
+             return nums[nums.length-1];
+        }
+        return 0;
+    }
+
+    //两个数组的交集
+    public int[] intersect(int[] nums1, int[] nums2) {
+
+        return null;
     }
 }
