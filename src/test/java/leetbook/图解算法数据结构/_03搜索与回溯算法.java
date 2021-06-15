@@ -2,8 +2,10 @@ package leetbook.图解算法数据结构;
 
 import entity.Node;
 import entity.TreeNode;
+import javafx.beans.property.ReadOnlyListProperty;
 import jdk.nashorn.internal.ir.CallNode;
 import org.junit.Test;
+import sun.reflect.generics.tree.Tree;
 import util.ArrayUtil;
 
 import java.util.*;
@@ -573,10 +575,101 @@ public class _03搜索与回溯算法 {
         return root;
     }
     //68-2 二叉树的公共祖先
-    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
-          return null;
+
+    class solution68{
+
+        TreeNode p;
+        TreeNode q;
+        List<Integer> listPRes =null;
+        List<Integer> listQRes =null;
+        public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+            this.p = p;
+            this.q = q;
+
+            if (root==null|| root==p || q==root) {
+                return root;
+            }
+            List<Integer> listP=new ArrayList<>();
+            List<Integer> listQ=new ArrayList<>();
+            dfs68(root,listP,listQ);
+
+            if (listPRes==null ) {
+                return  q;
+
+            }
+            if (listQRes==null) {
+                return  p;
+            }
+            Collections.reverse(listPRes);
+            Collections.reverse(listQRes);
+            for (Integer treeNode : listPRes) {
+                if (listQRes.contains(treeNode)) {
+//                       dfs68_2(root)
+                      break;
+                }
+            }
+
+            return null;
+        }
+
+        private void dfs68(TreeNode root, List<Integer> listP, List<Integer> listQ) {
+            if (root==null) {
+                return;
+            }
+            if (listPRes!=null && listQRes!=null) {
+                return;
+            }
+
+            if(listPRes==null&&listP.size()>0 && listP.get(listP.size()-1)==p.val){
+                listPRes =  listP;
+                return;
+            }
+            if(listQRes==null&&listQ.size()>0 && listQ.get(listQ.size()-1)==q.val){
+                listQRes =  listQ;
+                return;
+            }
+
+            listP.add(root.val);
+            listQ.add(root.val);
+            dfs68(root.left,new ArrayList<>(listP),new ArrayList<>(listQ));
+            dfs68(root.right,new ArrayList<>(listP),new ArrayList<>(listQ));
+        }
     }
 
+    //力扣官方题解
+    class solution68_2{
+        //map<节点val, 父节点>
+        Map<Integer,TreeNode> map=new HashMap<>();
+        List<Integer> visited = new ArrayList<>();
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+                dfs(root);
+                while(p!=null){
+                     visited.add(p.val);
+                     p=map.get(p.val);
+                }
+                while(q!=null){
+                    if (visited.contains(q.val)) {
+                        return q;
+                    }
+                    q=map.get(q.val);
+                }
+                return  null;
+        }
+
+        private void dfs(TreeNode root) {
+            if (root==null ) {
+                return;
+            }
+            if (root.left!=null) {
+                 map.put(root.left.val,root);
+            }
+            if(root.right!=null){
+                 map.put(root.right.val,root);
+            }
+            dfs(root.left);
+            dfs(root.right);
+        }
+    }
 
 
 }
