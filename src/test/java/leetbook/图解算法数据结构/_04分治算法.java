@@ -62,10 +62,45 @@ public class _04分治算法 {
     class Solution17 {
         public int[] printNumbers(int n) {
             double pow = Math.pow(10, n);
+            int a= (int) pow;
+            int[] res = new int[a-1];
+            for (int i = 0; i < a; i++) {
+                 res[i]= i+1;
+            }
+            return  res;
         }
+    }
+    //二叉树的后序搜索
+    //todo  理解不了
+    class Solution33 {
+        public boolean verifyPostorder(int[] postorder) {
+            return recur(postorder,0, postorder.length-1);
+        }
+
+        private boolean recur(int[] postorder, int i, int j) {
+            if (i>=j) {
+                 return true;
+            }
+            int p=i;
+            while (postorder[p]<postorder[j]){
+                 p++;
+            }
+
+            int m=p;
+            while(postorder[p]>postorder[j]){
+                  p++;
+            }
+            return  p==j && recur(postorder,i,m-1) && recur(postorder,m,j-1);
+        }
+
     }
 
 
+    class Solution51 {
+        public int reversePairs(int[] nums) {
+            return  0;
+        }
+    }
 
 
 }
