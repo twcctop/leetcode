@@ -19,6 +19,6 @@ public class _08位运算 {
 
     // 数字出现的
     public int[] singleNumbers(int[] nums) {
-
+         return  new int[1];
     }
 }
