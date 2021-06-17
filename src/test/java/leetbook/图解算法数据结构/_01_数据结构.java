@@ -257,7 +257,7 @@ public class _01_数据结构 {
         for(int j = i; j < c.length; j++) {
             if(c[j] < '0' || c[j] > '9') break;
             if(res > bndcry || res == bndcry && c[j] > '7') return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            res = res * 10 + (c[j] - '0');
+            res = res  *10 + (c[j] - '0');
         }
 
         return  sign* res;
