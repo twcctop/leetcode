@@ -12,4 +12,10 @@ public class _2021年6月 {
         //
         return  true;
     }
+
+    //最小好进制
+    public String smallestGoodBase(String n) {
+
+        return  "";
+    }
 }
