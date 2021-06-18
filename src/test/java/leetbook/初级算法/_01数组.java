@@ -4,13 +4,13 @@ import com.sun.javafx.logging.JFRInputEvent;
 import org.junit.Test;
 import util.ArrayUtil;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @Author: twc
  * @Date 2021/6/7 11:59
  **/
-public class _02数组 {
+public class _01数组 {
 
     /**
      * @Description
@@ -100,7 +100,43 @@ public class _02数组 {
 
     //两个数组的交集
     public int[] intersect(int[] nums1, int[] nums2) {
-
-        return null;
+         Set<Integer> set=new HashSet<Integer>();
+        for (int i : nums1) {
+             set.add(i);
+        }
+        List<Integer> list= new ArrayList<>();
+        for (int i : nums2) {
+            if (set.contains(i)&&!list.contains(i)) {
+                 list.add(i);
+            }
+        }
+        int[] res=new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+             res[i]= list.get(i);
+        }
+        return  res;
     }
+
+    public void moveZeroes(int[] nums) {
+        int slow=0,fast=0;
+         while(fast<nums.length){
+             if (nums[fast]!=0) {
+                  nums[slow]=nums[fast];
+                  fast++;
+                  slow++;
+             }else if(nums[fast]==0){
+                  fast++;
+             }
+         }
+        for (int i = slow; i < nums.length; i++) {
+             nums[i]=0;
+        }
+    }
+
+    // 有效的数独
+    public boolean isValidSudoku(char[][] board) {
+
+        return  false;
+    }
+
 }
