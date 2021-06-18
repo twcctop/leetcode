@@ -32,10 +32,42 @@ public class _07双指针 {
     }
 
     // 调整数组顺序
-    class Solution21 {
-        public int[] exchange(int[] nums) {
-            return  new int[1];
+
+    /**
+     * @Description
+     * @Date 2021/6/18 10:51
+     **/
+    @Test
+    public void testExchange() {
+        int[] a={2,4,6};
+         ArrayUtil.printIntArray(exchange(a));
+    }
+    public int[] exchange(int[] nums) {
+        int i = 0, j = nums.length - 1;
+        while (i < j) {
+            while (nums[i] % 2 == 1) {
+                i++;
+                if (i>=nums.length-1) {
+                    return nums;
+                }
+            }
+            while (nums[j] % 2 == 0) {
+                j--;
+                if (j<=0) {
+                    return nums;
+                }
+            }
+            if (i>=j) {
+                 break;
+            }
+
+            int tmp = 0;
+            tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
         }
+
+        return nums;
     }
 
     //翻转单词顺序

@@ -17,7 +17,7 @@ public class _08位运算 {
              return res;
     }
 
-    // 数字出现的
+    // 数字出现的次数
     public int[] singleNumbers(int[] nums) {
          return  new int[1];
     }
