@@ -1,4 +1,4 @@
-package test;
+package test.移位运算符;
 
 import org.junit.Test;
 
@@ -28,6 +28,10 @@ public class testShitOperators {
 
         int  b= 9;   // 1001
         assertThat(b&1,is(1));
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(i+":" + ((i&1)==1));
+        }
     }
 
 }
