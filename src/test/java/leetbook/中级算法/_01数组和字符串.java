@@ -82,8 +82,17 @@ public class _01数组和字符串 {
 
     }
 
-    //最长回文子串
-    public String longestPalindrome(String s) {
+    //最长回文子串  todo 看答案的
+    public String longestPalindrome(String s){
+        //
+        return  "";
 
     }
+
+    //递增的三元子序列
+    public boolean increasingTriplet(int[] nums) {
+        return  true;
+    }
+
+
 }
