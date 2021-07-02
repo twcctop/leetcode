@@ -3,6 +3,7 @@ package 海外兔;
 import org.junit.Test;
 import util.ArrayUtil;
 
+
 /**
  * @Author: twc
  * @Date 2021/6/30 21:21
@@ -34,8 +35,8 @@ public class 阿里 {
             int temp=nums[i];
             int j=i;
             while(j>0&&  nums[j-i]>temp){
-                 nums[j]= nums[j-1];
-                 j--;
+                nums[j]= nums[j-1];
+                j--;
             }
             nums[j]= temp;
         }
