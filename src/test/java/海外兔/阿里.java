@@ -101,8 +101,36 @@ public class 阿里 {
         return  null;
      }
 
-     //105. 从前序与中序遍历序列构造二叉树
+     //105. 从前序与中序遍历序列构造二叉树  todo 不明白
      public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return  null;
+     }
+     //19. 删除链表的倒数第 N 个结点
 
+
+     //1114. 按序打印  todo 阿里线程题目
+     class Foo {
+
+         public Foo() {
+
+         }
+
+         public void first(Runnable printFirst) throws InterruptedException {
+
+             // printFirst.run() outputs "first". Do not change or remove this line.
+             printFirst.run();
+         }
+
+         public void second(Runnable printSecond) throws InterruptedException {
+
+             // printSecond.run() outputs "second". Do not change or remove this line.
+             printSecond.run();
+         }
+
+         public void third(Runnable printThird) throws InterruptedException {
+
+             // printThird.run() outputs "third". Do not change or remove this line.
+             printThird.run();
+         }
      }
 }
