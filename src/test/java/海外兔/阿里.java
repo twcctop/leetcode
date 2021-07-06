@@ -1,12 +1,11 @@
 package 海外兔;
 
+import entity.ListNode;
 import entity.TreeNode;
 import org.junit.Test;
 import util.ArrayUtil;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 
 /**
@@ -133,4 +132,56 @@ public class 阿里 {
              printThird.run();
          }
      }
+
+     // 92 翻转链表2 //todo 思路明了 懒得写
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+          ListNode preHead = new ListNode(-501);
+          preHead.next=head;
+          ListNode cur= preHead;
+
+          ListNode leftNode =null;
+          ListNode rightNode =null;
+          ListNode endNode =null;
+          ListNode preNode =null;
+
+          while (cur!=null){
+              if (cur.val==left) {
+                  leftNode= cur;
+
+              } else if(cur.val == right){
+                  rightNode= cur;
+                  endNode=cur.next;
+                   break;
+              }
+              cur=cur.next;
+          }
+//          reverseNode(leftNode,rightNode);
+
+          return  preHead.next;
+    }
+
+    //合并区间
+    //todo 没时间做 试试和答案不同的map去做
+    public int[][] merge(int[][] intervals) {
+         Map<Integer,Integer>  map = new HashMap<>();
+         int maxLeft=0;
+        for (int[] interval : intervals) {
+            if (map.containsKey(interval[0])) {
+                 map.put(interval[0], Math.max(map.get(interval[0]),interval[1]));
+            }else {
+                map.put(interval[0],interval[1]);
+            }
+            maxLeft= Math.max(maxLeft,interval[0]);
+        }
+        for (int i = 0; i < maxLeft; i++) {
+            if (map.containsKey(i)) {
+
+            }
+        }
+        return  null;
+    }
+
+
+    //1143. 最长公共子序列
 }
