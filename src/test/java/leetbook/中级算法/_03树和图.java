@@ -1,5 +1,6 @@
 package leetbook.中级算法;
 
+import entity.Node;
 import entity.TreeNode;
 import org.junit.Test;
 import util.ArrayUtil;
@@ -70,6 +71,20 @@ public class _03树和图 {
           node.right= right;
          return  node;
 
+    }
+
+
+    // 填充每个节点的下一个右侧节点指针
+    public Node connect(Node root) {
+
+         return  null;
+    }
+
+
+    //二叉搜索树中第k小的元素
+    public int kthSmallest(TreeNode root, int k) {
+
+        return  0;
     }
 
 
