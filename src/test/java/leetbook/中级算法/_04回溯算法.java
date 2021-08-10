@@ -47,4 +47,24 @@ public class _04回溯算法 {
         }
     }
 
+    //全排列
+    public List<List<Integer>> permute(int[] nums) {
+
+        return null;
+    }
+
+    //子集
+    public List<List<Integer>> subsets(int[] nums) {
+
+        return null;
+    }
+
+    //单词搜索
+    public boolean exist(char[][] board, String word) {
+
+        return true;
+    }
+
+
+
 }
