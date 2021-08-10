@@ -3,6 +3,7 @@ package leetbook.中级算法;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @Author: twc
@@ -33,5 +34,22 @@ public class _05排序和搜索 {
     @Test
     public void test912() {
     }
+
+
+    /**
+     *@Description  1.基本快排
+     *@Date 2021/8/10 17:50
+     *
+    **/
+    class Solution{
+          //列表大小等于或者小于该大小，将优先于quickSort 使用插入排序
+         private  final int INSERTION_SORT_THRESHOLD = 7;
+
+         private  final Random RANDOM = new Random();
+
+
+
+
+     }
 
 }
