@@ -1,4 +1,4 @@
-package 面经._01;
+package 针对公司的题型._01;
 
 /**
  * @Author: twc
