@@ -1,4 +1,4 @@
-package leetbook.中级算法;
+package leetbook._03_中级算法;
 
 import entity.Node;
 import entity.TreeNode;

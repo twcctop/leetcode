@@ -1,4 +1,4 @@
-package leetbook.图解算法数据结构;
+package leetbook._01_图解算法数据结构;
 
 import entity.TreeNode;
 

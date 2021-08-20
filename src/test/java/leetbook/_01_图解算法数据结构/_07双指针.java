@@ -1,10 +1,8 @@
-package leetbook.图解算法数据结构;
+package leetbook._01_图解算法数据结构;
 
 import entity.ListNode;
 import org.junit.Test;
 import util.ArrayUtil;
-
-import java.util.Arrays;
 
 /**
  * @Author: twc

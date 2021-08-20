@@ -1,4 +1,4 @@
-package leetbook.初级算法;
+package leetbook._02_初级算法;
 
 import entity.TreeNode;
 

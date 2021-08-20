@@ -1,7 +1,6 @@
-package leetbook.中级算法;
+package leetbook._03_中级算法;
 
 import org.junit.Test;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.*;
 
