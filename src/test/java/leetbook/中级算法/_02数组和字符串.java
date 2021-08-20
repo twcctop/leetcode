@@ -9,7 +9,7 @@ import java.util.*;
  * @Author: twc
  * @Date 2021/6/22 17:23
  **/
-public class _01数组和字符串 {
+public class _02数组和字符串 {
 
 
     //todo 三数之和

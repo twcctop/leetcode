@@ -9,7 +9,7 @@ import java.util.List;
  * @Author: twc
  * @Date 2021/6/26 11:47
  **/
-public class _02链表 {
+public class _03链表 {
 
     //两数相加  模拟
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Author: twc
  * @Date 2021/6/26 20:04
  **/
-public class _05排序和搜索 {
+public class _06排序和搜索 {
 
 
     public void sortColors(int[] nums) {
