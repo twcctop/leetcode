@@ -100,6 +100,7 @@ public class _01_数组和字符串 {
     }
 
      // 滑动窗口最大值  https://leetcode-cn.com/problems/sliding-window-maximum/solution/shuang-xiang-dui-lie-jie-jue-hua-dong-chuang-kou-2/
+    // 左程云
     public int[] maxSlidingWindow(int[] nums, int k) {
         Deque<Integer> deque =new LinkedList<>();
         int cur=0,max=0;
