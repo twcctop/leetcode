@@ -1,7 +1,9 @@
 package leetbook._04_高级算法;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class _01_数组和字符串 {
 
@@ -58,11 +60,39 @@ public class _01_数组和字符串 {
     }
 
     // 缺失的第一个正数  todo hard难度
+    //  todo hash法 无法理解
     public int firstMissingPositive(int[] nums) {
 
 
 
+     return 0;
 
     }
+    // 最长连续序列  hash表算出来   todo  超时，逻辑换一下
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> set= new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        int res =1;
+        for (int i = 0; i < nums.length; i++) {
+             int count=1 ;
+             int cur= nums[i];
+             while(set.contains(cur+1)){
+                 cur++;
+                 count++;
+              }
+             res= Math.max(res,count);
+
+        }
+        return  res;
+    }
+
+
+     // 寻找重复数  //todo  二分法不能理解
+     public int findDuplicate(int[] nums) {
+
+        return 0;
+     }
 
 }
