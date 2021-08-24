@@ -1,6 +1,8 @@
 package leetbook._04_高级算法;
 
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class _01_数组和字符串 {
@@ -31,10 +33,6 @@ public class _01_数组和字符串 {
 
     }
 
-    //测试提交
-    //测试提交记录2
-    //测试提交记录3
-    //测试提交记录4
 
     //四数相加2
     public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
@@ -76,13 +74,51 @@ public class _01_数组和字符串 {
 
     }
 
-    // 缺失的第一个正数  todo hard难度
+    // 缺失的第一个正数  todo  hard难度
     public int firstMissingPositive(int[] nums) {
+        int n= nums.length;
+        for (int i = 0; i < n; i++) {
+
+        }
+
+        return 0;
+    }
+
+    // 寻找重复数
+    //https://leetcode-cn.com/problems/find-the-duplicate-number/solution/er-fen-fa-si-lu-ji-dai-ma-python-by-liweiwei1419
+    // todo 二分法  无法理解
+    public int findDuplicate(int[] nums) {
 
 
+        return  0;
+    }
 
+    // 基本计算器2  栈解决  +- 则入栈，乘除则获取栈顶元素 计算后压入
+    public int calculate(String s) {
+            return 0;
 
     }
+
+     // 滑动窗口最大值  https://leetcode-cn.com/problems/sliding-window-maximum/solution/shuang-xiang-dui-lie-jie-jue-hua-dong-chuang-kou-2/
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        Deque<Integer> deque =new LinkedList<>();
+        int cur=0,max=0;
+        for (int i = 0; i < k; i++) {
+             deque.addLast(nums[i]);
+             cur+=nums[i];
+        }
+        for (int i = k; i < nums.length; i++) {
+            deque.addLast(nums[i]);
+            Integer pollFirst = deque.pollFirst();
+            int curInCycle=cur-pollFirst+nums[i];
+            max=Math.max(curInCycle,cur);
+            cur= curInCycle;
+        }
+        return max;
+    }
+
+
+
 
 
 }
