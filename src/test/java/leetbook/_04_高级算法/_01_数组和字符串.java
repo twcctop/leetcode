@@ -115,8 +115,11 @@ public class _01_数组和字符串 {
             max=Math.max(curInCycle,cur);
             cur= curInCycle;
         }
-        return max;
+        return null;
     }
+
+
+
 
 
 
