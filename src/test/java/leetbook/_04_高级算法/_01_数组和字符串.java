@@ -2,8 +2,10 @@ package leetbook._04_高级算法;
 
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 public class _01_数组和字符串 {
 
@@ -75,6 +77,8 @@ public class _01_数组和字符串 {
     }
 
     // 缺失的第一个正数  todo  hard难度
+    // 缺失的第一个正数  todo hard难度
+    //  todo hash法 无法理解
     public int firstMissingPositive(int[] nums) {
         int n= nums.length;
         for (int i = 0; i < n; i++) {
@@ -97,7 +101,28 @@ public class _01_数组和字符串 {
     public int calculate(String s) {
             return 0;
 
+
     }
+    // 最长连续序列  hash表算出来   todo  超时，逻辑换一下
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> set= new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        int res =1;
+        for (int i = 0; i < nums.length; i++) {
+             int count=1 ;
+             int cur= nums[i];
+             while(set.contains(cur+1)){
+                 cur++;
+                 count++;
+              }
+             res= Math.max(res,count);
+
+        }
+        return  res;
+    }
+
 
      // 滑动窗口最大值  https://leetcode-cn.com/problems/sliding-window-maximum/solution/shuang-xiang-dui-lie-jie-jue-hua-dong-chuang-kou-2/
     // 左程云
@@ -117,9 +142,10 @@ public class _01_数组和字符串 {
         }
         return null;
     }
-
-
-
+    //测试提交1
+    //测试提交2
+    //测试提交3
+    //测试提交4
 
 
 
