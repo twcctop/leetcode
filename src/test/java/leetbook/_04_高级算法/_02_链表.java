@@ -5,6 +5,7 @@ import entity.ListNode;
 public class _02_链表 {
 
     public ListNode mergeKLists(ListNode[] lists) {
+
         return null;
     }
 
