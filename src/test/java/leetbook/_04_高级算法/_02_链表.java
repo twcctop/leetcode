@@ -5,19 +5,9 @@ import entity.ListNode;
 public class _02_链表 {
 
     public ListNode mergeKLists(ListNode[] lists) {
-
         return null;
     }
 
-
-     //测试提交
-     //测试提交2
-     //测试提交3
-    //测试提交
-    //测试提交5
-    //测试提交6
-    //测试提交7
-    //测试提交8
 
 
 }
