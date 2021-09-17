@@ -9,6 +9,12 @@ public class _02_链表 {
         return null;
     }
 
+     //排序链表
+    public ListNode sortList(ListNode head) {
+        return null;
+    }
+
+
 
 
 }
