@@ -54,7 +54,7 @@ public class _07泛型递归_树的递归 {
     }
 
     public TreeNode invertTree(TreeNode root) {
-         invert(root);
+         invert(root) ;
          return root;
     }
 

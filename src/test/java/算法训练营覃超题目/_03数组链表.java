@@ -59,8 +59,17 @@ public class _03数组链表 {
     }
 
 
+    /**
+     * @Description
+     * @Date 2021/10/1 18:16
+     **/
+    @Test
+    public void test() {
+        System.out.println(climbStairs(5));
+    }
 
-    //爬楼梯 test70
+
+    //爬楼梯 test70  动态规划
     public int climbStairs(int n) {
         if (n == 1) {
             return 1;
@@ -77,7 +86,7 @@ public class _03数组链表 {
         return arr[n];
     }
 
-
+        // 三数之和 ，暴力法不推荐
     @Test
     public void test15() {
 //        int[] a = {-1, 0, 1, 2, -1, -4};
@@ -107,7 +116,7 @@ public class _03数组链表 {
                 }
 
                 if (nums[i] + nums[j] + nums[third] == 0) {
-                    List<Integer> list = new LinkedList<Integer>();
+                    List<Integer> list = new LinkedList<>();
                     list.add(nums[i]);
                     list.add(nums[j]);
                     list.add(nums[third]);
