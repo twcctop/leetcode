@@ -4,10 +4,7 @@ import com.sun.xml.internal.ws.util.StringUtils;
 import org.junit.Test;
 import util.ArrayUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class _04回溯算法 {
@@ -90,8 +87,74 @@ public class _04回溯算法 {
         }
     }
 
-    //删除无效的括号
+    //删除无效的括号   想错了 我干
     public List<String> removeInvalidParentheses(String s) {
+        char[] chars = s.toCharArray();
+        Map<Character,Character> map = new HashMap<>();
+        Set<Character> set=new HashSet<>();
+        set.add('[');
+        set.add('{');
+        set.add('(');
+        Deque<Character>  deque1 =new LinkedList<>();
+        Deque<Character>  deque2 =new LinkedList<>();
+        Deque<Character>  deque3 =new LinkedList<>();
+
+        for (int i = 0; i < chars.length; i++) {
+            Character aChar= chars[i];
+            if (set.contains(aChar)) {
+                if (aChar=='{') {
+                    deque1.addFirst(aChar);
+                    continue;
+                }
+                if (aChar=='[') {
+                    deque2.addFirst(aChar);
+                    continue;
+                }
+                if (aChar=='(') {
+                    deque3.addFirst(aChar);
+                }
+            } else {
+                if (aChar=='}') {
+                    if (!deque1.isEmpty()&& deque1.getFirst()=='}') {
+                        deque1.pollFirst();
+                    }else {
+                        chars[i]='_';
+                    }
+                }
+
+                if (aChar==']') {
+                    if (!deque2.isEmpty()&& deque2.getFirst()==']') {
+                        deque2.pollFirst();
+                    }else {
+                        chars[i]='_';
+                    }
+                }
+                if (aChar==')') {
+                    if (!deque3.isEmpty()&& deque3.getFirst()==')') {
+                        deque3.pollFirst();
+                    }else {
+                        chars[i]='_';
+                    }
+                }
+            }
+        }
+        StringBuilder stringBuilder  =new StringBuilder();
+        for (char aChar : chars) {
+            if (aChar=='_') {
+                continue;
+            }
+            stringBuilder.append(aChar);
+        }
+
         return new ArrayList<>();
     }
+
+
+    //通配符匹配
+    public boolean isMatch(String s, String p) {
+         return true;
+    }
+
+
+
 }
