@@ -82,6 +82,10 @@ public class ArrayUtil {
         char[] ints = JSON.parseObject(str, char[].class);
         return ints;
     }
+    public static String[] convertToStringArray(String str){
+        String[] ints = JSON.parseObject(str, String[].class);
+        return ints;
+    }
 
     public static void printIntArray(int[] ints1) {
         List list =new ArrayList<>();
