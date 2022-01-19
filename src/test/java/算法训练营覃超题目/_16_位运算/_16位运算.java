@@ -1,4 +1,4 @@
-package 算法训练营覃超题目;
+package 算法训练营覃超题目._16_位运算;
 
 import org.junit.Test;
 
