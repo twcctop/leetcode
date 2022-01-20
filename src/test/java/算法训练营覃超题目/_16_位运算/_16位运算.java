@@ -12,26 +12,6 @@ import java.util.List;
 public class _16位运算 {
 
 
-    @Test
-    public void test191() {
-        //   idea debug得知  读取成8进制的，很怪异
-        System.out.println(hammingWeight(00000000000000000000000000001011));
-//        System.out.println(hammingWeight(1011));
-//        System.out.println(hammingWeight(00000000000000000000000000000010));
-    }
-
-    // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {
-        int count = 0;
-        for (int i = 0; i < 32; i++) {
-            int a = n >> i;
-            int b = a & 1;
-            if (b == 1) {
-                count++;
-            }
-        }
-        return count;
-    }
 
     @Test
     public void test50() {
