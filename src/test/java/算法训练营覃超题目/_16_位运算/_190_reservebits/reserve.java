@@ -15,12 +15,10 @@ public class reserve {
   }
 
   public int reverseBits(int n) {
-    if (n == 0) {
-      return 0;
-    }
-    int res = 1;
-    for (int i = 1; i < 32; i++) {
-      res = 10 * res + (n >> i);
+    int res= 0;
+    for (int i = 0; i <= 31; i++) {
+      int cur = (1 & (n>>i) ) << (31-i);
+        res+= cur;
     }
     return res;
   }

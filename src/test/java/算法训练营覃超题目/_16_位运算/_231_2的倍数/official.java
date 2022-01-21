@@ -2,7 +2,7 @@ package 算法训练营覃超题目._16_位运算._231_2的倍数;
 
 import org.junit.Test;
 
-public class off {
+public class official {
   public boolean isPowerOfTwo(int n) {
 
     return  n>0   && (  (n & (n - 1)) ==0 ) ;
