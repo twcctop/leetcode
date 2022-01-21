@@ -1,4 +1,4 @@
-package 算法训练营覃超题目._16_位运算;
+package _00_题型分类._10_位运算;
 
 import org.junit.Test;
 import util.ArrayUtil;
@@ -32,7 +32,7 @@ public class _136_singleNumber {
 
   /**
    * @Description
-   * @Date 2022/1/21 12:03
+   * @Date 2022/1/21 12:03w
    **/
   @Test
   public void testA() {

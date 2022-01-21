@@ -1,4 +1,4 @@
-package 算法训练营覃超题目._16_位运算._231_2的倍数;
+package _00_题型分类._10_位运算._231_2的倍数;
 
 import org.junit.Test;
 
