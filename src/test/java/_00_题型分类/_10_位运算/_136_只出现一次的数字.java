@@ -3,7 +3,7 @@ package _00_题型分类._10_位运算;
 import org.junit.Test;
 import util.ArrayUtil;
 
-public class _136_singleNumber {
+public class _136_只出现一次的数字 {
 
 
   /**
