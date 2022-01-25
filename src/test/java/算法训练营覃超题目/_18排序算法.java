@@ -1,16 +1,12 @@
 package 算法训练营覃超题目;
 
-import org.junit.Test;
-import org.omg.CORBA.ARG_IN;
-import util.ArrayUtil;
-
-import java.awt.image.AreaAveragingScaleFilter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.junit.Test;
+import util.ArrayUtil;
 
 /**
  * @Author: twc
