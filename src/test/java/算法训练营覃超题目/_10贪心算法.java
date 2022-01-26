@@ -10,110 +10,12 @@ import java.util.stream.Collectors;
  * @Date 2021/3/15 16:17
  **/
 public class _10贪心算法 {
-    /**
-     * @Description
-     * @Date 2021/3/22 18:21
-     **/
-    @Test
-    public void test322() {
-     int[]   coins = {1, 2, 5}
-     ;
-     int amount = 11;
-        System.out.println(coinChange(coins, amount));
-    }
-
-    public int coinChange(int[] coins, int amount) {
-        int max = amount + 1;
-        int[] dp = new int[amount + 1];
-        Arrays.fill(dp, max);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (coins[j] <= i) {
-                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
-                }
-            }
-        }
-        return dp[amount] > amount ? -1 : dp[amount];
-    }
 
 
-    /**
-     * @Description
-     * @Date 2021/3/22 19:00
-     **/
-    @Test
-    public void test806() {
-//        int[] a={5,5,5,10,20} ;
-//        int[] a={5,5,10,10,20} ;
-        int[] a={5,5,5,5,10,5,10,10,10,20} ;
-
-//        int[] a={10,10} ;
-        System.out.println(lemonadeChange(a));
-    }
-
-    public boolean lemonadeChange(int[] bills) {
-         Map<Integer, Integer> cash = new HashMap<>();
-        for (int i = 0; i < bills.length; i++){
-            if (bills[i]==5) {
-                putMap(cash,5);
-            }
-            if (bills[i]==10) {
-                if (cash.containsKey(5)) {
-                    putMap(cash,10);
-                    boolean b = removeMapOne(cash, 5);
-                    if (!b){
-                        return false;
-                    }
-                }else {
-                    return  false;
-                }
-
-            }
-            if (bills[i]==20) {
-                if (cash.containsKey(10)&&cash.get(10)>0) {
-                    removeMapOne(cash,10);
-                    if (cash.containsKey(5)&&cash.get(5)> 0){
-                        removeMapOne(cash,5);
-                    }else {
-                        return false;
-                    }
-                }else{
-                    if (cash.containsKey(5)&&cash.get(5)>2){
-                        removeMapOne(cash,5);
-                        removeMapOne(cash,5);
-                        removeMapOne(cash,5);
-                    }else {
-                        return  false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
 
 
-    private boolean removeMapOne(Map<Integer, Integer> cash, int i) {
-        if (cash.containsKey(i)) {
-            Integer count = cash.get(i);
-            if (count==1) {
-                 cash.remove(i);
-            }else {
-                 cash.put(i,count-1);
-            }
-            return true;
-        }else {
-             return  false;
-        }
-    }
 
-    private void putMap(Map<Integer, Integer> cash, int i) {
-        if (cash.containsKey(i)) {
-            cash.put(i,cash.get(i)+1);
-        }else {
-             cash.put(i,1);
-        }
-    }
+
 
     /**
      * @Description
