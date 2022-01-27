@@ -1,4 +1,4 @@
-package 算法训练营覃超题目;
+package _00_题型分类.lru;
 
 import org.junit.Test;
 
