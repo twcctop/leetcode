@@ -69,7 +69,7 @@ public class _03数组链表 {
     }
 
 
-    //爬楼梯 test70  动态规划
+    //爬楼梯 test70  _00_题型分类.动态规划
     public int climbStairs(int n) {
         if (n == 1) {
             return 1;
