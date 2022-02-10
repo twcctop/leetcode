@@ -19,6 +19,6 @@ public class _0130 {
 
     String[] s = s1.split(" ");
     String[] s2a = s2.split(" ");
-    return new String[];
+    return new String[1];
   }
 }
