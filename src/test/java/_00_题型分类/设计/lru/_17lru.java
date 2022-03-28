@@ -1,8 +1,7 @@
-package _00_题型分类.lru;
+package _00_题型分类.设计.lru;
 
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,6 +10,7 @@ import java.util.Map;
  * @Date 2021/4/23 17:06
  **/
 public class _17lru {
+//    https://leetcode-cn.com/problems/lru-cache/
     /**
      * @Description   LRU (最近最少使用) 缓存机制
      * @Date 2021/4/23 17:06
@@ -36,7 +36,6 @@ public class _17lru {
             return  -1;
         }
         public void put(int key, int value) {
-
              map.put(key,value);
         }
     }

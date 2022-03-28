@@ -1,3 +1,4 @@
+/*
 package leetcode_周赛.n278;
 
 import java.util.ArrayList;
@@ -7,10 +8,12 @@ import util.ArrayUtil;
 
 public class p2 {
 
-  /**
+  */
+/**
    * @Description
    * @Date 2022/1/30 10:35
-   **/
+   **//*
+
   @Test
   public void test() {
     int[] ints = ArrayUtil.convertStringIntToArray(
@@ -78,3 +81,4 @@ public class p2 {
     return  list;
   }
 }
+*/

@@ -3,9 +3,9 @@ package _00_题型分类._03_链表;
 import entity.ListNode;
 import java.util.Objects;
 import org.junit.Test;
+//  https://leetcode-cn.com/problems/swap-nodes-in-pairs/
 
 public class _24_两两交换链表 {
-
   @Test
   public void test24() {
     ListNode node4 = new ListNode(4);

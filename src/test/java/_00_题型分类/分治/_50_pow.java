@@ -13,7 +13,7 @@ public class _50_pow {
   }
   public double myPow(double x, int n) {
 
-     return
+     return 0l;
 
   }
 }
